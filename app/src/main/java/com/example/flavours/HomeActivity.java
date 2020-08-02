@@ -85,8 +85,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return false;
-            }
+                switch(item.getItemId()){
+                    case R.id.nav_home:
+                        setFragment(homeFragment);
+                        return true;
+                    case R.id.nav_world:
+                        //setFragment(searchFragment);
+                        return true;
+                    case R.id.nav_settings:
+                        setFragment(settingsFragment);
+                        return true;
+                    default:
+                        return false;
+                }            }
         });
     }
     private void setFragment(Fragment fragment) {
