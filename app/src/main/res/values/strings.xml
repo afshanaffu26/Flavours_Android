@@ -4,4 +4,14 @@
     <string name="closeNavDrawer">Navigation Bar closed</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best Discount on Every Order!</string>
+
+    <string name="slide_4_title">Fastest Delivery</string>
+    <string name="slide_4_desc">Fastest Delivery compared to any other Food App</string>
+
 </resources>

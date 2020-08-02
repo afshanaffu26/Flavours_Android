@@ -18,4 +18,10 @@
     <color name="titlelayoutborder">#33CEA1</color>
     <color name="descriptionlayoutbackground">#dae9b0</color>
     <color name="gifbg">#E8F8F5</color>
+
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+
 </resources>
