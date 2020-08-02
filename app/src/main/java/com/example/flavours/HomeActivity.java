@@ -28,7 +28,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private FrameLayout mMainFrame;
     private HomeFragment homeFragment;
     private CartFragment cartFragment;
-
+    private FeedbackFragment feedbackFragment;
+    private InviteFragment inviteFragment;
+    private OffersFragment offersFragment;
+    private OrderHistoryFragment orderHistoryFragment;
+    private SettingsFragment settingsFragment;
+    private HelpFragment helpFragment;
 
     @Override
     public void onResume() {
@@ -58,6 +63,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         homeFragment = new HomeFragment();
         cartFragment = new CartFragment();
+        helpFragment = new HelpFragment();
+        offersFragment = new OffersFragment();
+        orderHistoryFragment = new OrderHistoryFragment();
+        inviteFragment = new InviteFragment();
+        settingsFragment = new SettingsFragment();
+        feedbackFragment = new FeedbackFragment();
+
         setFragment(homeFragment);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
@@ -96,18 +108,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.menu1history:
+                setFragment(orderHistoryFragment);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.menu1offers:
+                setFragment(offersFragment);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.menu2share:
+                setFragment(inviteFragment);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.menu2feedback:
+                setFragment(feedbackFragment);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.menu2help:
+                setFragment(helpFragment);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.menu3logout:
