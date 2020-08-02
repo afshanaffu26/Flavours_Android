@@ -37,4 +37,19 @@
             android:textSize="@dimen/slide_desc" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="136dp"
+        android:layout_marginRight="136dp"
+        android:layout_marginBottom="108dp"
+        android:background="@color/colorWhite"
+        android:textColor="#51ca8e"
+        android:text="NEXT" />
+
 </RelativeLayout>
