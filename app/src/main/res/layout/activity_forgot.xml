@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Forgot Password"
+            android:text="Recover Password"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
 
@@ -62,7 +62,7 @@
 
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnSubmit"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
