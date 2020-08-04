@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView conditions;
+    TextView conditions,textLogin;
     Button btnSignUp;
 
     @Override
@@ -20,6 +20,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         conditions.setOnClickListener(this);
         btnSignUp = findViewById(R.id.btnSignUp);
         btnSignUp.setOnClickListener(this);
+        textLogin=findViewById(R.id.textLogin);
+        textLogin.setOnClickListener(this);
     }
 
     @Override
@@ -30,6 +32,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btnSignUp:
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                break;
+            case R.id.textLogin:
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
         }
     }
 }

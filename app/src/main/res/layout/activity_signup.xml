@@ -167,8 +167,19 @@
             android:text="SIGNUP"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
-
-
     </LinearLayout>
+        <TextView
+            android:id="@+id/textLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="630dp"
+            android:layout_marginLeft="80dp"
+            android:text="Already had an account? LOGIN"
+            android:textColor="@color/myTextColor"
+            android:textSize="18sp" />
+
+
+
 
 </RelativeLayout>

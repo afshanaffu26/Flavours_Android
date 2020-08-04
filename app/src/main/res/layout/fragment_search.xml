@@ -8,17 +8,17 @@
 
     <SearchView
         android:layout_width="match_parent"
-        android:layout_height="74dp" >
-
+        android:layout_height="63dp">
     </SearchView>
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:layout_marginLeft="20dp"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:textColor="@color/myMainColor"
         android:text="TOP CATEGORIES" />
 
@@ -26,16 +26,34 @@
         android:id="@+id/imageView5"
         android:layout_width="170dp"
         android:layout_height="123dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:layout_marginLeft="20dp"
         android:src="@drawable/si" />
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="55dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:text="SOUTH INDIAN" />
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="170dp"
         android:layout_height="123dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:layout_marginLeft="220dp"
         android:src="@drawable/chinese" />
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="275dp"
+        android:textSize="15dp"
+       android:textStyle="bold"
+        android:text="CHINESE" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -44,21 +62,42 @@
         android:layout_marginTop="280dp"
         android:layout_marginLeft="20dp"
         android:src="@drawable/french" />
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="410dp"
+        android:layout_marginLeft="75dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:text="FRENCH" />
+
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="170dp"
         android:layout_height="123dp"
-        android:layout_marginTop="280dp"
         android:layout_marginLeft="220dp"
+        android:layout_marginTop="280dp"
         android:src="@drawable/italian" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="410dp"
+        android:layout_marginLeft="275dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:text="ITALIAN" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="440dp"
         android:layout_marginLeft="20dp"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:textColor="@color/myMainColor"
         android:text="MORE CATEGORIES" />
 
@@ -66,16 +105,36 @@
         android:id="@+id/imageView12"
         android:layout_width="170dp"
         android:layout_height="123dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="475dp"
         android:layout_marginLeft="20dp"
         android:src="@drawable/cake" />
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="600dp"
+        android:layout_marginLeft="75dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:text="CAKES" />
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="170dp"
         android:layout_height="123dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="475dp"
         android:layout_marginLeft="220dp"
         android:src="@drawable/mohito" />
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="600dp"
+        android:layout_marginLeft="265dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:text="BEVERAGES" />
+
+
 
 
 
