@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ItemDescriptionActivity"></activity>
-        <activity android:name=".CartActivity" />
         <activity android:name=".FaqActivity" />
         <activity android:name=".ContactActivity" />
         <activity android:name=".TermsActivity" />
