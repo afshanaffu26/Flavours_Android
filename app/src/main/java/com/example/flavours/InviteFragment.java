@@ -1,5 +1,6 @@
 package com.example.flavours;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,13 +8,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link InviteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InviteFragment extends Fragment {
+public class InviteFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +25,8 @@ public class InviteFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    Button btnInvite;
 
     public InviteFragment() {
         // Required empty public constructor
@@ -59,6 +63,32 @@ public class InviteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_invite, container, false);
+        View v = inflater.inflate(R.layout.fragment_invite, container, false);
+        btnInvite = v.findViewById(R.id.btnInvite);
+        btnInvite.setOnClickListener(this);
+        return v;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.btnInvite:
+                inviteFriend();
+                break;
+        }
+    }
+
+    private void inviteFriend() {
+        try {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Flavours");
+            String shareMessage= "\nLet me recommend you this application\n\n";
+            shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+            startActivity(Intent.createChooser(shareIntent, "Choose one"));
+        } catch(Exception e) {
+            //e.toString();
+        }
     }
 }
