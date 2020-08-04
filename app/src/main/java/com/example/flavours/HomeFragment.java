@@ -1,5 +1,6 @@
 package com.example.flavours;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,13 +8,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +26,8 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    LinearLayout item1,item2,item3;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -59,6 +64,34 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
+        item1 = v.findViewById(R.id.item1);
+        item2 = v.findViewById(R.id.item2);
+        item3 = v.findViewById(R.id.item3);
+        item1.setOnClickListener(this);
+        item2.setOnClickListener(this);
+        item3.setOnClickListener(this);
+        return v;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.item1:
+                showItemDescription();
+                break;
+            case R.id.item2:
+                showItemDescription();
+                break;
+            case R.id.item3:
+                showItemDescription();
+                break;
+        }
+
+    }
+
+    private void showItemDescription() {
+        Intent i = new Intent(getActivity(),ItemDescriptionActivity.class);
+        startActivity(i);
     }
 }
