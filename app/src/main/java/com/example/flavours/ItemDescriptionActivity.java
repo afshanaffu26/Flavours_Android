@@ -24,6 +24,7 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Flavours");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
@@ -44,6 +45,12 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     @Override
