@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".ForgotActivity">
+    tools:context=".HelpActivity">
 
     <ProgressBar
         android:visibility="gone"
@@ -20,19 +20,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/help"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Recover Password"
+            android:text="HELP"
             android:textColor="@color/myTextColor"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -43,34 +45,34 @@
             app:srcCompat="@drawable/icon" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/help2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="30dp"
-            android:text="Enter Email"
+            android:gravity="center"
+            android:text="FAQ"
             android:textColor="@color/myTextColor"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="340dp"
+        <TextView
+            android:id="@+id/help3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
-
-
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            android:background="@color/myMainColor"
-            android:text="SUBMIT"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:gravity="center"
+            android:text="CONTACT US"
+            android:textColor="@color/myTextColor"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/help4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="SAFETY POLICIES"
+            android:textColor="@color/myTextColor"
+            android:textSize="24sp" />
 
 
     </LinearLayout>

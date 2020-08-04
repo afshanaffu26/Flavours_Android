@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".SignupActivity">
+    tools:context=".TermsActivity">
 
     <ProgressBar
         android:visibility="gone"
@@ -25,7 +25,7 @@
             layout="@layout/toolbar" />
 
         <TextView
-            android:id="@+id/terms"
+            android:id="@+id/help"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
