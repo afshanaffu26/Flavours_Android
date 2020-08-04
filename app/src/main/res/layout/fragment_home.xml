@@ -30,10 +30,11 @@
 
                         <ImageView
                             android:id="@+id/imageView5"
+                            android:layout_marginLeft="10dp"
                             android:layout_width="300dp"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
-                            android:src="@drawable/italian" />
+                            android:src="@drawable/noodles" />
 
                         <ImageView
                             android:id="@+id/imageView6"
@@ -58,6 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:layout_marginLeft="10dp"
                     android:text="Popular Cuisines"
                     android:textColor="@color/myTextColor"
                     android:textSize="18sp"
@@ -111,7 +113,7 @@
                                 android:layout_width="96dp"
                                 android:layout_height="96dp"
                                 android:layout_centerHorizontal="true"
-                                android:src="@drawable/indian" />
+                                android:src="@drawable/mexican" />
 
                             <TextView
                                 android:id="@+id/textView12"
@@ -120,7 +122,7 @@
                                 android:layout_gravity="center_horizontal|bottom"
                                 android:layout_marginTop="5dp"
                                 android:gravity="bottom|center_horizontal"
-                                android:text="Indian"
+                                android:text="Mexican"
                                 android:textColor="@color/myTextColor"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -137,7 +139,7 @@
                                 android:layout_width="96dp"
                                 android:layout_height="96dp"
                                 android:layout_centerHorizontal="true"
-                                android:src="@drawable/indian" />
+                                android:src="@drawable/chinese" />
 
                             <TextView
                                 android:id="@+id/textView13"
@@ -146,7 +148,7 @@
                                 android:layout_gravity="center_horizontal|bottom"
                                 android:layout_marginTop="5dp"
                                 android:gravity="bottom|center_horizontal"
-                                android:text="Indian"
+                                android:text="Chinese"
                                 android:textColor="@color/myTextColor"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -163,7 +165,7 @@
                                 android:layout_width="96dp"
                                 android:layout_height="96dp"
                                 android:layout_centerHorizontal="true"
-                                android:src="@drawable/indian" />
+                                android:src="@drawable/french" />
 
                             <TextView
                                 android:id="@+id/textView15"
@@ -172,7 +174,7 @@
                                 android:layout_gravity="center_horizontal|bottom"
                                 android:layout_marginTop="5dp"
                                 android:gravity="bottom|center_horizontal"
-                                android:text="Indian"
+                                android:text="French"
                                 android:textColor="@color/myTextColor"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -189,7 +191,7 @@
                                 android:layout_width="96dp"
                                 android:layout_height="96dp"
                                 android:layout_centerHorizontal="true"
-                                android:src="@drawable/indian" />
+                                android:src="@drawable/cake" />
 
                             <TextView
                                 android:id="@+id/textView10"
@@ -198,7 +200,7 @@
                                 android:layout_gravity="center_horizontal|bottom"
                                 android:layout_marginTop="5dp"
                                 android:gravity="bottom|center_horizontal"
-                                android:text="Indian"
+                                android:text="Swedish"
                                 android:textColor="@color/myTextColor"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -211,7 +213,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="All Restaurants"
+                    android:text="Explore Our Menu"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/myTextColor"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -241,7 +244,53 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
-                            android:text="Burger King"
+                            android:text="Double Cheese Hamburger"
+                            android:textColor="@color/myTextColor" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView10"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/trio" />
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:text="Flavours Trio meal"
+                            android:textColor="@color/myTextColor" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView11"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/noodles" />
+
+                        <TextView
+                            android:id="@+id/textView22"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:text="Stir Fried Noodles"
                             android:textColor="@color/myTextColor" />
 
                     </LinearLayout>
