@@ -67,8 +67,6 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
         ImageView imgProfileBtn = v.findViewById(R.id.imgProfileBtn);
         imgProfileBtn.setOnClickListener(this);
-        ImageView imgHelplineBtn = v.findViewById(R.id.imgHelplineBtn);
-        imgHelplineBtn.setOnClickListener(this);
         return v;
     }
     @Override
@@ -78,11 +76,6 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 Intent i = new Intent(getActivity(), ProfileActivity.class);
                 startActivity(i);
                 ((Activity) getActivity()).overridePendingTransition(0, 0);
-                break;
-            case R.id.imgHelplineBtn:
-//                Intent intent = new Intent(getActivity(), HelplineActivity.class);
-//                startActivity(intent);
-//                ((Activity) getActivity()).overridePendingTransition(0, 0);
                 break;
         }
     }
