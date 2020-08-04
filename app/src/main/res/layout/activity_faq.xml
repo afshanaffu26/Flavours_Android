@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Q1"
+            android:text="What is the address?"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
 
@@ -60,8 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="A1"
-            android:textColor="@color/myTextColor"
+            android:text="Montreal,Quebec,Canada"
+            android:textColor="@color/bg_screen4"
             android:textSize="24sp" />
 
         <TextView
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Q2"
+            android:text="Do we deliver food?"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
 
@@ -80,8 +80,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="A2"
-            android:textColor="@color/myTextColor"
+            android:text="Yes delivery/takeout available"
+            android:textColor="@color/bg_screen4"
             android:textSize="24sp" />
 
         <TextView
@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Q3"
+            android:text="Timings of the Restaurant?"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
 
@@ -100,8 +100,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="A3"
-            android:textColor="@color/myTextColor"
+            android:text="10:00 AM - 01:00 AM"
+            android:textColor="@color/bg_screen4"
             android:textSize="24sp" />
 
 

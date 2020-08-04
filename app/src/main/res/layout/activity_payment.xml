@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".SignupActivity">
+    tools:context=".PaymentActivity">
 
     <ProgressBar
         android:visibility="gone"
@@ -29,12 +29,12 @@
             layout="@layout/toolbar" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txt_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:gravity="center"
-            android:text="Sign Up To Flavours"
+            android:text="PAYMENT OPTIONS"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
 
@@ -47,12 +47,12 @@
             app:srcCompat="@drawable/icon" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/textName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="1dp"
-            android:text="Full Name"
+            android:text="Name on the card"
             android:textColor="@color/myTextColor"
             android:textSize="18sp" />
 
@@ -66,12 +66,12 @@
 
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/textcard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:text="Email"
+            android:text="Credit/Debit Card Number"
             android:textColor="@color/myTextColor"
             android:textSize="18sp" />
 
@@ -89,12 +89,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:text="Password"
+            android:text="CVV"
             android:textColor="@color/myTextColor"
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editPassword"
+            android:id="@+id/editcvv"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -102,84 +102,34 @@
             android:inputType="textPassword" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textmonthyear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:text="ConfirmPassword"
+            android:text="Exp Month/Year"
             android:textColor="@color/myTextColor"
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/confirmPassword"
+            android:id="@+id/monthyear"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:ems="10"
             android:inputType="textPassword" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="left"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="false"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/Agree"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
-                android:paddingTop="5dp"
-                android:singleLine="false"
-                android:text="I agree to"
-                android:textColor="@color/myMainColor" />
-
-            <TextView
-                android:id="@+id/conditions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
-                android:paddingTop="5dp"
-                android:singleLine="false"
-                android:text="Terms and Conditions"
-                android:textColor="@color/myMainColor"
-                android:textStyle="bold" />
-        </LinearLayout>
-
         <Button
-            android:id="@+id/btnSignUp"
+            android:id="@+id/btnPay"
             android:layout_width="214dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:background="@color/myMainColor"
-            android:text="SIGNUP"
+            android:text="PAY"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
     </LinearLayout>
-        <TextView
-            android:id="@+id/textLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="620dp"
-            android:text="Already had an account? LOGIN"
-            android:textColor="@color/myTextColor"
-            android:textSize="18sp" />
-
-
 
 
 </RelativeLayout>

@@ -84,16 +84,16 @@
                 android:id="@+id/Promo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
                 android:inputType="textPersonName"
-                android:text="Enter Your Promo Code" />
+                android:text="Enter Your Promo Code"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
-         </LinearLayout>
+    </LinearLayout>
     <TextView
         android:id="@+id/subTotal"
         android:layout_width="wrap_content"
@@ -129,7 +129,7 @@
         android:layout_weight="1"
         android:textSize="25dp"
         android:textColor="#000000"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="430dp"
         android:text="Total" />
     <TextView
         android:id="@+id/sTotal"
@@ -169,15 +169,16 @@
         android:layout_weight="1"
         android:textSize="25dp"
         android:textColor="#000000"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="430dp"
         android:layout_marginLeft="280dp"
         android:text="6.00" />
+
     <Button
         android:id="@+id/btnCheckout"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="238dp"
+        android:layout_height="36dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="540dp"
+        android:layout_marginTop="500dp"
         android:background="@color/myMainColor"
         android:text="CheckOut Order"
         android:textColor="#FFFFFF"
