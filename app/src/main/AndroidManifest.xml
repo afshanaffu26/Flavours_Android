@@ -13,7 +13,6 @@
         <activity android:name=".CartActivity" />
         <activity android:name=".FaqActivity" />
         <activity android:name=".ContactActivity" />
-        <activity android:name=".HelpActivity" />
         <activity android:name=".TermsActivity" />
         <activity android:name=".Welcome2Activity" />
         <activity android:name=".MainActivity" />

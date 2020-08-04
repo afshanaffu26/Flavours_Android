@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Q-1"
+            android:text="Q1"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
 
