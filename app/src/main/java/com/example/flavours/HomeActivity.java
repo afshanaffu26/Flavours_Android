@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private OrderHistoryFragment orderHistoryFragment;
     private SettingsFragment settingsFragment;
     private HelpFragment helpFragment;
+    private SearchFragment searchFragment;
 
     @Override
     public void onResume() {
@@ -69,6 +70,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         inviteFragment = new InviteFragment();
         settingsFragment = new SettingsFragment();
         feedbackFragment = new FeedbackFragment();
+        searchFragment = new SearchFragment();
 
         setFragment(homeFragment);
 
@@ -90,7 +92,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         setFragment(homeFragment);
                         return true;
                     case R.id.nav_world:
-                        //setFragment(searchFragment);
+                        setFragment(searchFragment);
                         return true;
                     case R.id.nav_settings:
                         setFragment(settingsFragment);

@@ -1,20 +1,26 @@
 package com.example.flavours;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FeedbackFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FeedbackFragment extends Fragment {
+public class FeedbackFragment extends Fragment implements View.OnClickListener {
 
+    Button btnSend;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,6 +65,40 @@ public class FeedbackFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feedback, container, false);
+        View v = inflater.inflate(R.layout.fragment_feedback, container, false);
+        btnSend = v.findViewById(R.id.btnSend);
+        btnSend.setOnClickListener(this);
+        return v;
+    }
+    protected void sendEmail() {
+        Log.i("Send email", "");
+        String[] TO = {""};
+        String[] CC = {""};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            //finish();
+            //Log.i("Finished sending email...", "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            //Toast.makeText(MainActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId())
+        {
+            case R.id.btnSend:
+                sendEmail();
+                break;
+        }
     }
 }
