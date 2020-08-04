@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <SearchView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="74dp" >
+
+    </SearchView>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        android:textColor="@color/myMainColor"
+        android:text="TOP CATEGORIES" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="170dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/cart" />
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="170dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="220dp"
+        android:src="@drawable/cart" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="170dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/cart" />
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="170dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginLeft="220dp"
+        android:src="@drawable/cart" />
+
+
 
 </FrameLayout>
