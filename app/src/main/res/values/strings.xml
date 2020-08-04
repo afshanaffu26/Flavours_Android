@@ -14,5 +14,28 @@
     <string name="slide_4_title">Fastest Delivery</string>
     <string name="slide_4_desc">Fastest Delivery compared to any other Food App</string>
     <string name="splash">Beyond the boundaries of taste!</string>
+    <string name="item_description">100% pure Veg burger patties seasoned with just a pinch of salt and pepper. It’s topped with tangy pickles, chopped onions, ketchup, mustard and two slices of melty American cheese. It contains no artificial flavors, preservatives or added colors from artificial sources.* Our pickle contains an artificial preservative, so skip it if you like.</string>
+    <string name="item_ingredients">Regular Bun
+Ingredients: Enriched Flour (Wheat Flour, Malted Barley Flour, Niacin, Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Water, Sugar, Yeast, Soybean Oil, Contains 2% or Less: Salt, Wheat Gluten, Potato Flour, May Contain One or More Dough Conditioners (DATEM, Ascorbic Acid, Mono and Diglycerides, Enzymes), Vinegar.
+
+Contains: Wheat.
+Pasteurized Process American Cheese
+Ingredients: Milk, Cream, Water, Sodium Citrate, Salt, Cheese Cultures, Citric Acid, Enzymes, Soy Lecithin, Color Added.
+
+Contains: Milk, Soy.
+Pickle Slices
+Ingredients: Cucumbers, Water, Distilled Vinegar, Salt, Calcium Chloride, Alum, Potassium Sorbate (Preservative), Natural Flavors, Polysorbate 80, Extractives of Turmeric (Color).
+
+Ketchup
+Ingredients: Tomato Concentrate from Red Ripe Tomatoes, Distilled Vinegar, High Fructose Corn Syrup, Corn Syrup, Water, Salt, Natural Flavors.
+
+Onions
+Ingredients: Onions.
+
+Mustard
+Ingredients: Distilled Vinegar, Water, Mustard Seed, Salt, Turmeric, Paprika, Spice Extractive.
+
+Grill Seasoning
+Ingredients: Salt, Pepper.</string>
 
 </resources>
