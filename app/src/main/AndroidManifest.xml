@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
+
         <activity android:name=".Welcome2Activity"></activity>
         <activity android:name=".MainActivity" />
-=======
+
         <activity android:name=".TermsActivity"></activity>
->>>>>>> 7edd17b589b81f2a4f324699a525f7ad20bad91b
+
         <activity android:name=".ForgotActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".ProfileActivity" />
