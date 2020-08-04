@@ -75,7 +75,7 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btnAddToCart:
-                Toast.makeText(this,"Items added to cart succesfully.",Toast.LENGTH_LONG);
+                Toast.makeText(this,"Items added to cart succesfully.",Toast.LENGTH_LONG).show();
                 break;
         }
     }

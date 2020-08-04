@@ -1,5 +1,6 @@
 package com.example.flavours;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,13 +14,15 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CartFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CartFragment extends Fragment implements AdapterView.OnItemSelectedListener{
+public class CartFragment extends Fragment implements AdapterView.OnItemSelectedListener,View.OnClickListener{
+    Button btnCheckout;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,9 +68,12 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
+
+        btnCheckout = v.findViewById(R.id.btnCheckout);
+        btnCheckout.setOnClickListener(this);
+
+
         Spinner spinner =  v.findViewById(R.id.spinnerCart);
 
         // Spinner click listener
@@ -87,6 +93,7 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
+
         return v;
     }
 
@@ -98,5 +105,13 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnCheckout:
+                startActivity(new Intent(getContext(), PaymentActivity.class));
+                break;
+        }
     }
 }
