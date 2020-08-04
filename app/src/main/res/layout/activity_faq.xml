@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".ContactActivity">
+    tools:context=".FaqActivity">
 
     <ProgressBar
         android:visibility="gone"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="CONTACT US"
+            android:text="FAQ"
             android:textColor="@color/myTextColor"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -45,32 +45,62 @@
             app:srcCompat="@drawable/icon" />
 
         <TextView
-            android:id="@+id/contacta"
+            android:id="@+id/q1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Customer Care-4383341844"
+            android:text="Q-1"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/contactb"
+            android:id="@+id/a1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Toll Free-1800998991"
+            android:text="A1"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/contactc"
+            android:id="@+id/Q2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Email-flavourscanada@gmail.com"
+            android:text="Q2"
+            android:textColor="@color/myTextColor"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/A2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="A2"
+            android:textColor="@color/myTextColor"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/Q3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="Q3"
+            android:textColor="@color/myTextColor"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/A3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="A3"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
 
