@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="30dp"
-            android:text="Email"
+            android:text="Name"
             android:textColor="@color/myTextColor"
             android:textSize="18sp" />
 
@@ -113,15 +113,28 @@
             android:ems="10"
             android:inputType="textPassword" />
 
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I Agree" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/myMainColor"
+            android:text="Terms and Conditions" />
+
         <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:id="@+id/btnSignUp"
+            android:layout_width="214dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
+            android:background="@color/myMainColor"
             android:text="SIGNUP"
             android:textColor="#FFFFFF"
-            android:background="@color/myMainColor"
             android:textStyle="bold" />
 
 

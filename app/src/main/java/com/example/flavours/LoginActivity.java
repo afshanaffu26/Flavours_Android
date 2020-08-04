@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnLogin;
-    TextView txt_recover_password;
+    TextView txt_recover_password,textSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
         txt_recover_password= findViewById(R.id.txt_recover_password);
         txt_recover_password.setOnClickListener(this);
+        textSignUp=findViewById(R.id.textView2);
+        textSignUp.setOnClickListener(this);
     }
 
     @Override
@@ -37,6 +39,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.txt_recover_password:
                 startActivity(new Intent(getApplicationContext(), ForgotActivity.class));
+            case R.id.textView2:
+                startActivity(new Intent(getApplicationContext(), SignupActivity.class));
+
             }
         }
             }
