@@ -41,8 +41,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+
                 android:orientation="vertical">
 
                 <TextView
@@ -50,10 +52,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="80dp"
                     android:textColor="#000000"
                     android:text="Cake"
                     android:textSize="30dp" />
+                <Spinner
+                    android:id="@+id/spinnerCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#efefef"
+                    android:layout_marginRight="15dp"
+                    />
 
             </LinearLayout>
 
@@ -89,7 +100,8 @@
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:inputType="textPersonName"
-                android:text="Enter Your Promo Code" />
+                android:hint="Enter Promo Code"
+                android:text="" />
 
 
         </LinearLayout>

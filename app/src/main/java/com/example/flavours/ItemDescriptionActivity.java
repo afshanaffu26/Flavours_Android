@@ -3,23 +3,31 @@ package com.example.flavours;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemDescriptionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class ItemDescriptionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     private static final int MAX_QUANTITY = 20;
+    Button btnAddToCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_description);
+
+        btnAddToCart = findViewById(R.id.btnAddToCart);
+        btnAddToCart.setOnClickListener(this);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,5 +69,14 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.btnAddToCart:
+                Toast.makeText(this,"Items added to cart succesfully.",Toast.LENGTH_LONG);
+                break;
+        }
     }
 }
