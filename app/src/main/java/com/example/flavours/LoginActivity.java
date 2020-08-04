@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.txt_recover_password:
                 startActivity(new Intent(getApplicationContext(), ForgotActivity.class));
+                break;
             case R.id.textView2:
                 startActivity(new Intent(getApplicationContext(), SignupActivity.class));
 
