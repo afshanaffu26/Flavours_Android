@@ -9,17 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".ContactActivity"></activity>
+        <activity android:name=".HelpActivity" />
         <activity android:name=".TermsActivity" />
-=======
-
-        <activity android:name=".Welcome2Activity"></activity>
+        <activity android:name=".Welcome2Activity" />
         <activity android:name=".MainActivity" />
-
-        <activity android:name=".TermsActivity"></activity>
-
->>>>>>> 325fcbc1df2df1a58548a95ccb63766f349101e8
         <activity android:name=".ForgotActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".ProfileActivity" />
