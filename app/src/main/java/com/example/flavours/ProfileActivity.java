@@ -18,7 +18,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Profile");
+        getSupportActionBar().setTitle("Flavours");
         //display back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

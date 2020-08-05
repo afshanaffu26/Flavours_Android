@@ -1,6 +1,7 @@
 package com.example.flavours;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +12,11 @@ import android.widget.TextView;
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
     TextView conditions,textLogin;
     Button btnSignUp;
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +27,11 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         btnSignUp.setOnClickListener(this);
         textLogin=findViewById(R.id.textLogin);
         textLogin.setOnClickListener(this);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Flavours");
+        //display back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
