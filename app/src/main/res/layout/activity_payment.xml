@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:inputType="text" />
 
 
         <TextView
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/textView7"
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="numberPassword" />
 
         <TextView
             android:id="@+id/textmonthyear"
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="number" />
 
         <Button
             android:id="@+id/btnPay"
