@@ -110,7 +110,7 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnCheckout:
-                startActivity(new Intent(getContext(), PaymentActivity.class));
+                startActivity(new Intent(getContext(), AddressActivity.class));
                 break;
         }
     }

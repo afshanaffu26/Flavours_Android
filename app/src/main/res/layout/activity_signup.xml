@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:inputType="text" />
 
 
         <TextView
