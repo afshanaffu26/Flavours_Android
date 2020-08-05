@@ -34,7 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:gravity="center"
-            android:text="PAYMENT OPTIONS"
+            android:text="Payment"
+            android:textStyle="bold"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
 

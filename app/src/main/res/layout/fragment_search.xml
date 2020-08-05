@@ -14,6 +14,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="63dp"></SearchView>
+
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
@@ -159,11 +163,6 @@
                 android:textStyle="bold" />
         </FrameLayout>
     </ScrollView>
-
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="63dp">
-    </SearchView>
 
 
 </FrameLayout>

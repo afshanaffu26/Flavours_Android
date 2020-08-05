@@ -49,57 +49,57 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="What is the address?"
             android:textColor="@color/myTextColor"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/a1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="Montreal,Quebec,Canada"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/Q2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="Do we deliver food?"
             android:textColor="@color/myTextColor"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/A2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="Yes delivery/takeout available"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/Q3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="Timings of the Restaurant?"
             android:textColor="@color/myTextColor"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/A3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="10:00 AM - 01:00 AM"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
 
     </LinearLayout>

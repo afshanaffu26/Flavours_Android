@@ -136,7 +136,7 @@
                         android:paddingTop="5dp"
                         android:singleLine="false"
                         android:text="I agree to"
-                        android:textColor="@color/myTextColor" />
+                         />
 
                     <TextView
                         android:id="@+id/conditions"
@@ -146,7 +146,6 @@
                         android:paddingTop="5dp"
                         android:singleLine="false"
                         android:text="Terms and Conditions"
-                        android:textColor="@color/myTextColor"
                         android:textStyle="bold" />
                 </LinearLayout>
 

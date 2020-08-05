@@ -27,7 +27,6 @@
         android:gravity="center"
         android:layout_marginTop="50dp"
         android:text="Your review will help us to give you better experience. Make it a good one!"
-        android:textColor="@color/myTextColor"
         android:textSize="18sp" />
 
     <EditText

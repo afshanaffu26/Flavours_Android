@@ -37,7 +37,6 @@
             android:layout_marginTop="50dp"
             android:padding="10dp"
             android:text="Invite a friend and get exciting offers on each successful invite.."
-            android:textColor="@color/myTextColor"
             android:textSize="18sp" />
 
             <Button
