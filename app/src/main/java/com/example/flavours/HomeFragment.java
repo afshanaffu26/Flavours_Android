@@ -28,6 +28,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private String mParam2;
 
     LinearLayout item1,item2,item3;
+    LinearLayout cusineItem1,cusineItem2,cusineItem3,cusineItem4,cusineItem5;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -68,9 +69,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         item1 = v.findViewById(R.id.item1);
         item2 = v.findViewById(R.id.item2);
         item3 = v.findViewById(R.id.item3);
+        cusineItem1 = v.findViewById(R.id.cuisineItem1);
+        cusineItem2 = v.findViewById(R.id.cuisineItem2);
+        cusineItem3 = v.findViewById(R.id.cuisineItem3);
+        cusineItem4 = v.findViewById(R.id.cuisineItem4);
+        cusineItem5 = v.findViewById(R.id.cuisineItem5);
         item1.setOnClickListener(this);
         item2.setOnClickListener(this);
         item3.setOnClickListener(this);
+        cusineItem1.setOnClickListener(this);
+        cusineItem2.setOnClickListener(this);
+        cusineItem3.setOnClickListener(this);
+        cusineItem4.setOnClickListener(this);
+        cusineItem5.setOnClickListener(this);
         return v;
     }
 
@@ -86,8 +97,28 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.item3:
                 showItemDescription();
                 break;
+            case R.id.cuisineItem1:
+                showCuisineItems();
+                break;
+            case R.id.cuisineItem2:
+                showCuisineItems();
+                break;
+            case R.id.cuisineItem3:
+                showCuisineItems();
+                break;
+            case R.id.cuisineItem4:
+                showCuisineItems();
+                break;
+            case R.id.cuisineItem5:
+                showCuisineItems();
+                break;
         }
 
+    }
+
+    private void showCuisineItems() {
+        Intent i = new Intent(getActivity(),CuisineItemsActivity.class);
+        startActivity(i);
     }
 
     private void showItemDescription() {
