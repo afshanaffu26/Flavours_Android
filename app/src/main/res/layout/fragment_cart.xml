@@ -116,11 +116,11 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/DC"
+                        android:id="@+id/subTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Delivery Charges"
+                        android:text="SubTotal"
                         android:textSize="20sp" />
 
                     <TextView
@@ -132,6 +132,14 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/DC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Delivery Charges"
+                        android:textSize="20sp" />
+
+                    <TextView
                         android:id="@+id/Total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -139,13 +147,6 @@
                         android:text="Total"
                         android:textSize="20sp" />
 
-                    <TextView
-                        android:id="@+id/subTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="SubTotal"
-                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -156,19 +157,11 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/Tp"
+                        android:id="@+id/sTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="6.00"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/DCP"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="1.25"
+                        android:text="3.50"
                         android:textSize="20sp" />
 
                     <TextView
@@ -180,12 +173,21 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/sTotal"
+                        android:id="@+id/DCP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="3.50"
+                        android:text="1.25"
                         android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/Tp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="6.00"
+                        android:textSize="20sp" />
+
                 </LinearLayout>
 
             </LinearLayout>
