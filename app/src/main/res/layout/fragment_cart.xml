@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/myTextColor"
                     android:text="Cake"
                     android:textSize="30dp" />
                 <Spinner
@@ -84,7 +84,7 @@
                     android:layout_marginTop="80dp"
                     android:text="3.50"
                     android:layout_marginLeft="4dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/myTextColor"
                     android:textSize="30dp" />
             </LinearLayout>
         </LinearLayout>
@@ -103,6 +103,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:hint="Enter Promo Code"
+
                 android:text="" />
  </LinearLayout>
     </LinearLayout>
@@ -112,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="25dp"
-        android:textColor="#000000"
+        android:textColor="@color/myTextColor"
         android:layout_marginTop="300dp"
         android:text="SubTotal" />
 
@@ -122,7 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="25dp"
-        android:textColor="#000000"
+        android:textColor="@color/myTextColor"
         android:layout_marginTop="340dp"
         android:text="Tax" />
     <TextView
@@ -131,7 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="25dp"
-        android:textColor="#000000"
+        android:textColor="@color/myTextColor"
         android:layout_marginTop="380dp"
         android:text="Delivery Charges" />
     <TextView
@@ -140,7 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="25dp"
-        android:textColor="#000000"
+        android:textColor="@color/myTextColor"
         android:layout_marginTop="430dp"
         android:text="Total" />
     <TextView
@@ -149,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="25dp"
-        android:textColor="#000000"
+        android:textColor="@color/myTextColor"
         android:layout_marginTop="300dp"
         android:layout_marginLeft="280dp"
         android:text="3.50" />
@@ -160,7 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="25dp"
-        android:textColor="#000000"
+        android:textColor="@color/myTextColor"
         android:layout_marginTop="340dp"
         android:layout_marginLeft="280dp"
         android:text="1.25" />
@@ -170,7 +171,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="25dp"
-        android:textColor="#000000"
+        android:textColor="@color/myTextColor"
         android:layout_marginTop="380dp"
         android:layout_marginLeft="280dp"
         android:text="1.25" />
@@ -180,7 +181,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="25dp"
-        android:textColor="#000000"
+        android:textColor="@color/myTextColor"
         android:layout_marginTop="430dp"
         android:layout_marginLeft="280dp"
         android:text="6.00" />
