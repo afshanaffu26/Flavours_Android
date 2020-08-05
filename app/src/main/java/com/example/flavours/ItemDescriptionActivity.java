@@ -18,7 +18,7 @@ import java.util.List;
 public class ItemDescriptionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     private static final int MAX_QUANTITY = 20;
-    Button btnAddToCart;
+    Button btnAddToCart,btnBuyNow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,8 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
         setContentView(R.layout.activity_item_description);
 
         btnAddToCart = findViewById(R.id.btnAddToCart);
+        btnBuyNow = findViewById(R.id.btnBuyNow);
+        btnBuyNow.setOnClickListener(this);
         btnAddToCart.setOnClickListener(this);
 
 
@@ -76,6 +78,9 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
         switch(view.getId()){
             case R.id.btnAddToCart:
                 Toast.makeText(this,"Items added to cart succesfully.",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.btnBuyNow:
+                startActivity(new Intent(getApplicationContext(), AddressActivity.class));
                 break;
         }
     }
