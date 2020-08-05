@@ -17,6 +17,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="Offers"
+            android:textStyle="bold"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
         <ImageView

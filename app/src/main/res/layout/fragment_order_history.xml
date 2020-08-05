@@ -51,7 +51,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:text="Ordered on July 11"
-                        android:textColor="@color/myTextColor" />
+                         />
 
                 </LinearLayout>
 
@@ -94,7 +94,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:text="Ordered on July 17"
-                        android:textColor="@color/myTextColor" />
+                         />
 
                 </LinearLayout>
             </LinearLayout>

@@ -52,7 +52,7 @@
             android:gravity="center"
             android:text="Customer Care-4383341844"
             android:textColor="@color/myTextColor"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/contactb"
@@ -62,7 +62,7 @@
             android:gravity="center"
             android:text="Toll Free-1800998991"
             android:textColor="@color/myTextColor"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/contactc"
@@ -72,7 +72,7 @@
             android:gravity="center"
             android:text="Email-flavourscanada@gmail.com"
             android:textColor="@color/myTextColor"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
 
     </LinearLayout>

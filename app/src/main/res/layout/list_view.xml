@@ -6,5 +6,5 @@
     android:padding="10dip"
     android:textSize="20dp"
     android:textColor="@color/myTextColor"
-    android:textStyle="bold" >
+     >
 </TextView>

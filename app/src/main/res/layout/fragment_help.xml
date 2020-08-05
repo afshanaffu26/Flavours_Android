@@ -46,7 +46,7 @@
             android:gravity="center"
             android:text="FAQ"
             android:textColor="@color/myTextColor"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/help3"
@@ -56,7 +56,7 @@
             android:gravity="center"
             android:text="CONTACT US"
             android:textColor="@color/myTextColor"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
 
     </LinearLayout>
