@@ -5,306 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vegan Special"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/myTextColor"
+                android:id="@+id/txtName"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/noodles"
+            android:scaleType="centerCrop" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="200dp"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fillViewport="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_marginTop="15dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView5"
-                            android:layout_marginLeft="10dp"
-                            android:layout_width="300dp"
-                            android:layout_height="match_parent"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/noodles" />
-
-                        <ImageView
-                            android:id="@+id/imageView6"
-                            android:layout_width="200dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="20dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/indian" />
-
-                        <ImageView
-                            android:id="@+id/imageView7"
-                            android:layout_width="200dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="20dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/mexican" />
-                    </LinearLayout>
-                </HorizontalScrollView>
-
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Popular Cuisines"
-                    android:textColor="@color/myTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginTop="15dp"
-                    android:fillViewport="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:id="@+id/cuisineItem1"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="25dp"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/RoundedImage2"
-                                android:layout_width="96dp"
-                                android:layout_height="96dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/indian" />
-
-                            <TextView
-                                android:id="@+id/textView11"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|bottom"
-                                android:layout_marginTop="5dp"
-                                android:gravity="bottom|center_horizontal"
-                                android:text="Indian"
-                                android:textColor="@color/myTextColor"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/cuisineItem2"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="25dp"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/RoundedImage3"
-                                android:layout_width="96dp"
-                                android:layout_height="96dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/mexican" />
-
-                            <TextView
-                                android:id="@+id/textView12"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|bottom"
-                                android:layout_marginTop="5dp"
-                                android:gravity="bottom|center_horizontal"
-                                android:text="Mexican"
-                                android:textColor="@color/myTextColor"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/cuisineItem3"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="25dp"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/RoundedImage4"
-                                android:layout_width="96dp"
-                                android:layout_height="96dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/chinese" />
-
-                            <TextView
-                                android:id="@+id/textView13"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|bottom"
-                                android:layout_marginTop="5dp"
-                                android:gravity="bottom|center_horizontal"
-                                android:text="Chinese"
-                                android:textColor="@color/myTextColor"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/cuisineItem4"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="25dp"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/RoundedImage5"
-                                android:layout_width="96dp"
-                                android:layout_height="96dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/french" />
-
-                            <TextView
-                                android:id="@+id/textView15"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|bottom"
-                                android:layout_marginTop="5dp"
-                                android:gravity="bottom|center_horizontal"
-                                android:text="French"
-                                android:textColor="@color/myTextColor"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/cuisineItem5"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="25dp"
-                            android:orientation="vertical">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/RoundedImage1"
-                                android:layout_width="96dp"
-                                android:layout_height="96dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/cake" />
-
-                            <TextView
-                                android:id="@+id/textView10"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|bottom"
-                                android:layout_marginTop="5dp"
-                                android:gravity="bottom|center_horizontal"
-                                android:text="Swedish"
-                                android:textColor="@color/myTextColor"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </HorizontalScrollView>
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Explore Our Menu"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/myTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:id="@+id/item1"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView9"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:src="@drawable/ic_food" />
-
-                        <TextView
-                            android:id="@+id/textView19"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:text="Double Cheese Hamburger"
-                            android:textColor="@color/myTextColor" />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/item2"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView10"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:src="@drawable/trio" />
-
-                        <TextView
-                            android:id="@+id/textView21"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:text="Flavours Trio meal"
-                            android:textColor="@color/myTextColor" />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/item3"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView11"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:src="@drawable/noodles" />
-
-                        <TextView
-                            android:id="@+id/textView22"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:text="Stir Fried Noodles"
-                            android:textColor="@color/myTextColor" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
+            android:background="@color/colorWhite"
+            android:textColor="@color/myTextColor"
+            android:text="Explore our Menu" />
+    </LinearLayout>
 </FrameLayout>

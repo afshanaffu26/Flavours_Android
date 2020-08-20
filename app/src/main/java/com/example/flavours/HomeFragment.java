@@ -1,15 +1,31 @@
 package com.example.flavours;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,7 +33,8 @@ import android.widget.LinearLayout;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
-
+    private FirebaseFirestore firebaseFirestore;
+TextView txtName;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,8 +44,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private String mParam1;
     private String mParam2;
 
-    LinearLayout item1,item2,item3;
-    LinearLayout cusineItem1,cusineItem2,cusineItem3,cusineItem4,cusineItem5;
+    Button button;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -64,65 +80,31 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        item1 = v.findViewById(R.id.item1);
-        item2 = v.findViewById(R.id.item2);
-        item3 = v.findViewById(R.id.item3);
-        cusineItem1 = v.findViewById(R.id.cuisineItem1);
-        cusineItem2 = v.findViewById(R.id.cuisineItem2);
-        cusineItem3 = v.findViewById(R.id.cuisineItem3);
-        cusineItem4 = v.findViewById(R.id.cuisineItem4);
-        cusineItem5 = v.findViewById(R.id.cuisineItem5);
-        item1.setOnClickListener(this);
-        item2.setOnClickListener(this);
-        item3.setOnClickListener(this);
-        cusineItem1.setOnClickListener(this);
-        cusineItem2.setOnClickListener(this);
-        cusineItem3.setOnClickListener(this);
-        cusineItem4.setOnClickListener(this);
-        cusineItem5.setOnClickListener(this);
+        txtName=v.findViewById(R.id.txtName);
+
+        button = v.findViewById(R.id.button);
+        button.setOnClickListener(this);
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseFirestore.collection("Specials").document("special").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
+                String name = documentSnapshot.getString("name");
+                txtName.setText(name);
+            }
+        });
         return v;
     }
 
     @Override
     public void onClick(View view) {
         switch(view.getId()){
-            case R.id.item1:
-                showItemDescription();
-                break;
-            case R.id.item2:
-                showItemDescription();
-                break;
-            case R.id.item3:
-                showItemDescription();
-                break;
-            case R.id.cuisineItem1:
-                showCuisineItems();
-                break;
-            case R.id.cuisineItem2:
-                showCuisineItems();
-                break;
-            case R.id.cuisineItem3:
-                showCuisineItems();
-                break;
-            case R.id.cuisineItem4:
-                showCuisineItems();
-                break;
-            case R.id.cuisineItem5:
-                showCuisineItems();
+            case R.id.button:
+                startActivity(new Intent(getContext(),TestActivity.class));
                 break;
         }
 
-    }
-
-    private void showCuisineItems() {
-        Intent i = new Intent(getActivity(),CuisineItemsActivity.class);
-        startActivity(i);
-    }
-
-    private void showItemDescription() {
-        Intent i = new Intent(getActivity(),ItemDescriptionActivity.class);
-        startActivity(i);
     }
 }
