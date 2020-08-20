@@ -4,27 +4,19 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -34,7 +26,8 @@ import com.squareup.picasso.Picasso;
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
     private FirebaseFirestore firebaseFirestore;
-TextView txtName;
+    TextView txtName;
+    ImageView imageView;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -81,8 +74,8 @@ TextView txtName;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        txtName=v.findViewById(R.id.txtName);
-
+        txtName = v.findViewById(R.id.txtName);
+        imageView = v.findViewById(R.id.imageView);
         button = v.findViewById(R.id.button);
         button.setOnClickListener(this);
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -90,9 +83,10 @@ TextView txtName;
             @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
                 String name = documentSnapshot.getString("name");
+                String image = documentSnapshot.getString("image");
                 txtName.setText(name);
+                Picasso.get().load(image).into(imageView);
             }
         });
         return v;
@@ -102,7 +96,7 @@ TextView txtName;
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.button:
-                startActivity(new Intent(getContext(),TestActivity.class));
+                startActivity(new Intent(getContext(), CuisinesActivity.class));
                 break;
         }
 

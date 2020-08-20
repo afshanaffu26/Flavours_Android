@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TestActivity">
+    tools:context=".CuisinesActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -18,6 +18,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtVeganSpecials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Vegan Specials"
+                android:textColor="@color/myTextColor"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -61,12 +71,11 @@
                 android:id="@+id/txtOffers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:layout_gravity="center"
-                android:text="View the best discounts"
+                android:layout_marginBottom="5dp"
+                android:text="Best discounts ever.."
                 android:textColor="@color/myTextColor"
-                android:textSize="18sp"
-                />
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>

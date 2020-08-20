@@ -9,8 +9,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +23,8 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
 
     private static final int MAX_QUANTITY = 20;
     Button btnAddToCart,btnBuyNow;
+    ImageView imageView;
+    TextView txtName,txtPrice,txtDesc,txtIngredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +36,30 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
         btnBuyNow.setOnClickListener(this);
         btnAddToCart.setOnClickListener(this);
 
+        imageView = findViewById(R.id.imageView);
+        txtName = findViewById(R.id.txtName);
+        txtPrice = findViewById(R.id.price);
+        txtDesc = findViewById(R.id.txtDesc);
+        txtIngredients = findViewById(R.id.txtIngredients);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Flavours");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        String name = getIntent().getStringExtra("name");
+        String image = getIntent().getStringExtra("image");
+        String price = getIntent().getStringExtra("price");
+        String desc = getIntent().getStringExtra("desc");
+
+        String ingredients = getIntent().getStringExtra("ingredients");
+        ingredients = ingredients.replaceAll( "\\\\n", "\n" );
+
+        Picasso.get().load(image).into(imageView);
+        txtName.setText(name);
+        txtPrice.setText("Price : " + price+"$");
+        txtDesc.setText(desc);
+        txtIngredients.setText(ingredients);
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
         // Spinner click listener

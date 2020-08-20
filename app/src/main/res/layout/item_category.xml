@@ -10,7 +10,7 @@
     android:layout_marginTop="8dp"
     android:layout_marginStart="8dp">
     <LinearLayout
-        android:id="@+id/cuisineItem1"
+        android:id="@+id/linearLayout"
         android:layout_width="100dp"
         android:layout_margin="10dp"
         android:layout_height="match_parent"
