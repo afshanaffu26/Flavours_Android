@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private boolean isInFront;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private BottomNavigationView mMainNav;
+    //private BottomNavigationView mMainNav;
     private FrameLayout mMainFrame;
     private HomeFragment homeFragment;
     private CartFragment cartFragment;
@@ -60,7 +60,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout=findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
         mMainFrame=findViewById(R.id.main_frame);
-        mMainNav=findViewById(R.id.main_nav);
+        //mMainNav=findViewById(R.id.main_nav);
 
         homeFragment = new HomeFragment();
         cartFragment = new CartFragment();
@@ -84,7 +84,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        /*mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()){
@@ -100,7 +100,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     default:
                         return false;
                 }            }
-        });
+        });*/
     }
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction= getSupportFragmentManager().beginTransaction();
@@ -112,11 +112,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id=item.getItemId();
         switch(id){
-            case R.id.menu1cart:
-//                if (!isInFront)
+            case R.id.menu1home:
+                //                if (!isInFront)
 //                startActivity(new Intent(getApplicationContext(),HomeActivity.class));
 //                else
 //                    drawerLayout.closeDrawer(GravityCompat.START);
+                setFragment(homeFragment);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.menu1cart:
                 setFragment(cartFragment);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
@@ -126,6 +130,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.menu1offers:
                 setFragment(offersFragment);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.menu2settings:
+                setFragment(settingsFragment);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.menu2share:

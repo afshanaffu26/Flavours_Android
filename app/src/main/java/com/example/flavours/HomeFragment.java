@@ -4,19 +4,23 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -24,10 +28,12 @@ import com.squareup.picasso.Picasso;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements View.OnClickListener {
-    private FirebaseFirestore firebaseFirestore;
-    TextView txtName;
-    ImageView imageView;
+public class HomeFragment extends Fragment {
+    //private FirebaseFirestore firebaseFirestore;
+
+    FirebaseFirestore firebaseFirestore;
+    private FirestoreRecyclerAdapter adapter,adapter1;
+    RecyclerView recyclerView,recyclerViewCategory;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -74,31 +80,92 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        txtName = v.findViewById(R.id.txtName);
-        imageView = v.findViewById(R.id.imageView);
-        button = v.findViewById(R.id.button);
-        button.setOnClickListener(this);
+
         firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseFirestore.collection("Specials").document("special").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @SuppressLint("SetTextI18n")
+        recyclerView = v.findViewById(R.id.recyclerView);
+        recyclerViewCategory = v.findViewById(R.id.recyclerViewCategory);
+
+        //Query
+        Query query = firebaseFirestore.collection("VeganMenu");
+        //RecyclerOptions
+        FirestoreRecyclerOptions<CuisineItemsModel> options = new FirestoreRecyclerOptions.Builder<CuisineItemsModel>()
+                .setQuery(query,CuisineItemsModel.class)
+                .build();
+        adapter = new FirestoreRecyclerAdapter<CuisineItemsModel, HomeFragment.CuisinesViewHolder>(options) {
+            @NonNull
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                String name = documentSnapshot.getString("name");
-                String image = documentSnapshot.getString("image");
-                txtName.setText(name);
-                Picasso.get().load(image).into(imageView);
+            public HomeFragment.CuisinesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cuisine,parent,false);
+                return new HomeFragment.CuisinesViewHolder(view);
             }
-        });
+            @Override
+            protected void onBindViewHolder(@NonNull HomeFragment.CuisinesViewHolder holder, int position, @NonNull final CuisineItemsModel model) {
+                holder.txtName.setText(model.getName());
+                Picasso.get().load(model.getImage()).into(holder.imageView);
+                holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void
+                    onClick(View view) {
+                        Intent intent = new Intent(view.getContext(), ItemDescriptionActivity.class);
+                        intent.putExtra("name", model.getName());
+                        intent.putExtra("image", model.getImage());
+                        intent.putExtra("price", model.getPrice());
+                        intent.putExtra("desc", model.getDesc());
+                        intent.putExtra("ingredients", model.getIngredients());
+                        startActivity(intent);
+                    } });
+            }
+        };
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
+
+        Query query1 = firebaseFirestore.collection("Category");
+        FirestoreRecyclerOptions<CuisinesModel> options1 = new FirestoreRecyclerOptions.Builder<CuisinesModel>()
+                .setQuery(query1,CuisinesModel.class)
+                .build();
+        adapter1 = new FirestoreRecyclerAdapter<CuisinesModel, HomeFragment.CuisinesViewHolder>(options1) {
+
+            @NonNull
+            @Override
+            public HomeFragment.CuisinesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category,parent,false);
+                return new HomeFragment.CuisinesViewHolder(view);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull HomeFragment.CuisinesViewHolder holder, int position, @NonNull final CuisinesModel model) {
+                holder.txtName.setText(model.getName());
+                Picasso.get().load(model.getImage()).into(holder.imageView);
+                // Glide.with(getApplicationContext()).load(CuisinesModel.getImage().toString()).into(holder.imageView);
+                holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(view.getContext(), CuisineItemsActivity.class);
+                        intent.putExtra("name", model.getName());
+                        startActivity(intent);
+                    } });
+            }
+        };
+        recyclerViewCategory.setHasFixedSize(true);
+        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        adapter1.startListening();
+        recyclerViewCategory.setAdapter(adapter1);
         return v;
     }
+    private class CuisinesViewHolder extends RecyclerView.ViewHolder {
 
-    @Override
-    public void onClick(View view) {
-        switch(view.getId()){
-            case R.id.button:
-                startActivity(new Intent(getContext(), CuisinesActivity.class));
-                break;
+        private TextView txtName;
+        private ImageView imageView;
+        LinearLayout linearLayout;
+
+        public CuisinesViewHolder(@NonNull View itemView) {
+            super(itemView);
+            txtName = itemView.findViewById(R.id.txtName);
+            imageView = itemView.findViewById(R.id.imageView);
+            linearLayout = itemView.findViewById(R.id.linearLayout);
         }
-
     }
+
 }

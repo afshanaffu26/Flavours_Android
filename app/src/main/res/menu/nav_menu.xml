@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:title="FLAVOURS">
     <menu>
+        <item android:title="Home" android:icon="@drawable/home" android:id="@+id/menu1home"/>
         <item android:title="Cart" android:icon="@drawable/cart" android:id="@+id/menu1cart"/>
         <item android:title="Order History" android:icon="@drawable/history" android:id="@+id/menu1history"/>
         <item android:title="Offers" android:icon="@drawable/offers" android:id="@+id/menu1offers"/>
@@ -9,6 +10,7 @@
 </item>
     <item android:title="Others">
         <menu>
+            <item android:title="Settings" android:icon="@drawable/settings" android:id="@+id/menu2settings"/>
             <item android:title="Invite Friends" android:icon="@drawable/share" android:id="@+id/menu2share"/>
             <item android:title="Feedback" android:icon="@drawable/feedback" android:id="@+id/menu2feedback"/>
             <item android:title="Need Help?" android:icon="@drawable/help" android:id="@+id/menu2help"/>

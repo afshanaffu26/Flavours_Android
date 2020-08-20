@@ -24,6 +24,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
+
+// Not used
 public class CuisinesActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter,adapter1;
