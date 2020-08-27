@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 /**
@@ -20,7 +21,8 @@ import android.widget.Toast;
  */
 public class FeedbackFragment extends Fragment implements View.OnClickListener {
 
-    Button btnSend;
+    Button btnSend,btnDiscard;
+    EditText editTextTextMultiLine;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,12 +69,20 @@ public class FeedbackFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_feedback, container, false);
         btnSend = v.findViewById(R.id.btnSend);
+        btnDiscard = v.findViewById(R.id.btnDiscard);
+        editTextTextMultiLine = v.findViewById(R.id.editTextTextMultiLine);
         btnSend.setOnClickListener(this);
+        btnDiscard.setOnClickListener(this);
         return v;
     }
     protected void sendEmail() {
+        String feedbackMessage = editTextTextMultiLine.getText().toString().trim();
+        if(feedbackMessage.isEmpty()) {
+            Toast.makeText(getContext(), "Please enter your experience..", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Log.i("Send email", "");
-        String[] TO = {""};
+        String[] TO = {"flavours@gmail.com"};
         String[] CC = {""};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
@@ -80,8 +90,8 @@ public class FeedbackFragment extends Fragment implements View.OnClickListener {
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, feedbackMessage);
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
@@ -99,6 +109,13 @@ public class FeedbackFragment extends Fragment implements View.OnClickListener {
             case R.id.btnSend:
                 sendEmail();
                 break;
+            case R.id.btnDiscard:
+                discardEmail();
+                break;
         }
+    }
+
+    private void discardEmail() {
+        editTextTextMultiLine.setText("");
     }
 }

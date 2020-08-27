@@ -17,6 +17,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="Invite Friend"
+            android:textStyle="bold"
             android:textColor="@color/myTextColor"
             android:textSize="24sp" />
         <ImageView
@@ -39,16 +40,16 @@
             android:text="Invite a friend and get exciting offers on each successful invite.."
             android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/btnInvite"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="100dp"
-                android:background="@color/myMainColor"
-                android:text="Invite Friend"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnInvite"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:background="@color/myMainColor"
+            android:text="Invite Friend"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </FrameLayout>
