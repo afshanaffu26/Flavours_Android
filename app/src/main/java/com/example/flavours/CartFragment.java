@@ -50,6 +50,7 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
     private FirestoreRecyclerAdapter adapter;
     RecyclerView recyclerView;
     LinearLayout linearLayout;
+    String documentId;
     TextView txtSubTotal,txtTax,txtDeliveryCharge,txtTotal,txtEmptyCart;
     double subTotal,deliveryCharge,tax,total;
     // TODO: Rename parameter arguments, choose names that match
@@ -167,7 +168,7 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
                 return new CartFragment.CartViewHolder(view);
             }
             @Override
-            protected void onBindViewHolder(@NonNull CartFragment.CartViewHolder holder, int position, @NonNull final CuisineItemsModel model) {
+            protected void onBindViewHolder(@NonNull CartFragment.CartViewHolder holder, final int position, @NonNull final CuisineItemsModel model) {
                 holder.txtName.setText(model.getName());
                 holder.txtQuantity.setText("Qty: "+model.getQuantity());
                 holder.txtPrice.setText("Price: "+model.getPrice()+"$");
@@ -182,8 +183,9 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
                         intent.putExtra("price", model.getPrice());
                         intent.putExtra("desc", model.getDesc());
                         intent.putExtra("ingredients", model.getIngredients());
-                        intent.putExtra("id", model.getId());
                         intent.putExtra("quantity",model.getQuantity());
+                        documentId = getSnapshots().getSnapshot(position).getId();
+                        intent.putExtra("documentId", documentId);
                         startActivity(intent);
                     } });
                 progressBar.setVisibility(View.GONE);

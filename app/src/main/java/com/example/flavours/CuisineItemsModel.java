@@ -1,7 +1,6 @@
 package com.example.flavours;
 
 public class CuisineItemsModel {
-    String id;
     String name;
     String image;
     String price;
@@ -12,8 +11,7 @@ public class CuisineItemsModel {
     public CuisineItemsModel() {
     }
 
-    public CuisineItemsModel(String id, String name, String image, String price, String desc, String ingredients) {
-        this.id = id;
+    public CuisineItemsModel(String name, String image, String price, String desc, String ingredients) {
         this.name = name;
         this.image = image;
         this.price = price;
@@ -21,8 +19,7 @@ public class CuisineItemsModel {
         this.ingredients = ingredients;
     }
 
-    public CuisineItemsModel(String id, String name, String image, String price, String desc, String ingredients, String quantity) {
-        this.id = id;
+    public CuisineItemsModel(String name, String image, String price, String desc, String ingredients, String quantity) {
         this.name = name;
         this.image = image;
         this.price = price;
@@ -37,14 +34,6 @@ public class CuisineItemsModel {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getDesc() {

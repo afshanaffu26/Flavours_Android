@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".AddressActivity">
 
-
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,10 +25,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:orientation="vertical">
-
-                <include
-                    android:id="@+id/toolbar"
-                    layout="@layout/toolbar" />
 
                 <TextView
                     android:id="@+id/txt_payment"

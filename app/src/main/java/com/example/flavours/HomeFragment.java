@@ -1,6 +1,5 @@
 package com.example.flavours;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -29,8 +28,7 @@ import com.squareup.picasso.Picasso;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    //private FirebaseFirestore firebaseFirestore;
-
+    String documentId;
     FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter,adapter1;
     RecyclerView recyclerView,recyclerViewCategory;
@@ -98,9 +96,17 @@ public class HomeFragment extends Fragment {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cuisine,parent,false);
                 return new HomeFragment.CuisinesViewHolder(view);
             }
+
+            @NonNull
             @Override
-            protected void onBindViewHolder(@NonNull HomeFragment.CuisinesViewHolder holder, int position, @NonNull final CuisineItemsModel model) {
+            public CuisineItemsModel getItem(int position) {
+                return super.getItem(position);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull HomeFragment.CuisinesViewHolder holder, final int position, @NonNull final CuisineItemsModel model) {
                 holder.txtName.setText(model.getName());
+
                 Picasso.get().load(model.getImage()).into(holder.imageView);
                 holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -112,7 +118,9 @@ public class HomeFragment extends Fragment {
                         intent.putExtra("price", model.getPrice());
                         intent.putExtra("desc", model.getDesc());
                         intent.putExtra("ingredients", model.getIngredients());
-                        intent.putExtra("id", model.getId());
+                        documentId = getSnapshots().getSnapshot(position).getId();
+                        intent.putExtra("documentId", documentId);
+
                         startActivity(intent);
                     } });
             }

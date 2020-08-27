@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +27,7 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
     RecyclerView recyclerView;
     String cuisine ="";
     TextView txtCuisine;
+    String documentId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +45,9 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
         Query query;
         cuisine = getIntent().getStringExtra("name");
         if (cuisine.equals("Indian"))
-            query = firebaseFirestore.collection("Menu");
+            query = firebaseFirestore.collection("IndianMenu");
         else if (cuisine.equals("Chinese"))
-            query = firebaseFirestore.collection("Chinese");
+            query = firebaseFirestore.collection("ChineseMenu");
         else
             query = firebaseFirestore.collection("VeganMenu");
 
@@ -67,7 +67,7 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull CuisineItemsActivity.CuisinesItemsViewHolder holder, int position, @NonNull final CuisineItemsModel model) {
+            protected void onBindViewHolder(@NonNull CuisineItemsActivity.CuisinesItemsViewHolder holder, final int position, @NonNull final CuisineItemsModel model) {
                 holder.txtName.setText(model.getName());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
                 // Glide.with(getApplicationContext()).load(CuisineItemsModel.getImage().toString()).into(holder.imageView);
@@ -81,7 +81,8 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
                         intent.putExtra("price", model.getPrice());
                         intent.putExtra("desc", model.getDesc());
                         intent.putExtra("ingredients", model.getIngredients());
-                        intent.putExtra("id", model.getId());
+                        documentId = getSnapshots().getSnapshot(position).getId();
+                        intent.putExtra("documentId", documentId);
                         startActivity(intent);
                     } });
             }
@@ -116,8 +117,6 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.item1:
-                showItemDescription();
-                break;
             case R.id.item2:
                 showItemDescription();
                 break;
