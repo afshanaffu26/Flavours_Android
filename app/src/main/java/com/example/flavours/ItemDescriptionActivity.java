@@ -36,7 +36,7 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
     ImageView imageView;
     TextView txtName,txtPrice,txtDesc,txtIngredients;
     FirebaseFirestore firebaseFirestore;
-    String name,image,price,quantity,id;
+    String name,image,price,quantity,id,desc,ingredients;
     Spinner spinner;
     boolean isUpdated = false;
 
@@ -62,23 +62,8 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Flavours");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        name = getIntent().getStringExtra("name");
-        image = getIntent().getStringExtra("image");
-        price = getIntent().getStringExtra("price");
-        String desc = getIntent().getStringExtra("desc");
-        id = getIntent().getStringExtra("id");
-
-        String ingredients = getIntent().getStringExtra("ingredients");
-        ingredients = ingredients.replaceAll( "\\\\n", "\n" );
-
-        Picasso.get().load(image).into(imageView);
-        txtName.setText(name);
-        txtPrice.setText("Price : " + price+"$");
-        txtDesc.setText(desc);
-        txtIngredients.setText(ingredients);
-
         spinner = (Spinner) findViewById(R.id.spinner);
+
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
         // Spinner Drop down elements
@@ -93,9 +78,32 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
 
-    }
+        name = getIntent().getStringExtra("name");
+        image = getIntent().getStringExtra("image");
+        price = getIntent().getStringExtra("price");
+        desc = getIntent().getStringExtra("desc");
+        id = getIntent().getStringExtra("id");
+        ingredients = getIntent().getStringExtra("ingredients");
+        ingredients = ingredients.replaceAll( "\\\\n", "\n" );
+        quantity = getIntent().getStringExtra("quantity");
 
-    public void addData(String name, String image, final String quantity, String price, final String id){
+        Picasso.get().load(image).into(imageView);
+        txtName.setText(name);
+        txtPrice.setText("Price : " + price+"$");
+        txtDesc.setText(desc);
+        txtIngredients.setText(ingredients);
+        spinner.setSelection(getIndex(spinner, quantity));
+
+    }
+    private int getIndex(Spinner spinner, String myString){
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                return i;
+            }
+        }
+        return 0;
+    }
+    public void addData(String name, String image, final String quantity, String price, final String id, String desc, String ingredients){
         isUpdated = false;
         firebaseFirestore.collection("Cart")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -103,8 +111,8 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (DocumentSnapshot documentSnapshot : task.getResult()) {
-                        CartModel cartModel = documentSnapshot.toObject(CartModel.class);
-                        if (cartModel.getId().equals(id)) {
+                        CuisineItemsModel cuisineItemsModel = documentSnapshot.toObject(CuisineItemsModel.class);
+                        if (cuisineItemsModel.getId().equals(id)) {
                             firebaseFirestore.collection("Cart").document(documentSnapshot.getId()).update("quantity", quantity);
                             isUpdated = true;
                         }
@@ -117,15 +125,16 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
                 Toast.makeText(getApplicationContext(),"Error: "+e.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+
         if(!isUpdated) {
-            addItemToCart();
+            addItemToCart(name, image, quantity,price, id,desc,ingredients);
         }
     }
 
-    private void addItemToCart() {
-        CartModel cartModel = new CartModel(name, image, price, quantity, id);
+    private void addItemToCart(String name, String image, final String quantity, String price, String id,String desc,String ingredients) {
+        CuisineItemsModel cuisineItemsModel = new CuisineItemsModel(id, name, image, price,desc,ingredients,quantity);
         firebaseFirestore.collection("Cart")
-                .add(cartModel)
+                .add(cuisineItemsModel)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
@@ -161,7 +170,7 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
         switch(view.getId()){
             case R.id.btnAddToCart:
                 quantity = spinner.getSelectedItem().toString();
-                addData(name,image,quantity,price,id);
+                addData(name,image,quantity,price,id,desc,ingredients);
                 break;
         }
     }

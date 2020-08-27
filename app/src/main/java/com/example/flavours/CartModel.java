@@ -6,6 +6,8 @@ public class CartModel {
     String price;
     String quantity;
     String id;
+    String desc;
+    String ingredients;
 
     public CartModel() {
     }

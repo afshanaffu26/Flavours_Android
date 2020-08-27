@@ -1,23 +1,42 @@
 package com.example.flavours;
 
 public class CuisineItemsModel {
+    String id;
     String name;
     String image;
     String price;
     String desc;
     String ingredients;
-    String id;
+    String quantity;
 
     public CuisineItemsModel() {
     }
 
-    public CuisineItemsModel(String name, String image, String price, String desc, String ingredients, String id) {
+    public CuisineItemsModel(String id, String name, String image, String price, String desc, String ingredients) {
+        this.id = id;
         this.name = name;
         this.image = image;
         this.price = price;
         this.desc = desc;
         this.ingredients = ingredients;
+    }
+
+    public CuisineItemsModel(String id, String name, String image, String price, String desc, String ingredients, String quantity) {
         this.id = id;
+        this.name = name;
+        this.image = image;
+        this.price = price;
+        this.desc = desc;
+        this.ingredients = ingredients;
+        this.quantity = quantity;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
     public String getId() {

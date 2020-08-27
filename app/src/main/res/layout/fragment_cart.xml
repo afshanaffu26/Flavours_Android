@@ -5,104 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CartFragment">
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressbar"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <ScrollView
+    <TextView
+        android:id="@+id/txtEmptyCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Cart is empty!" />
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <LinearLayout
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <!--                    <EditText-->
+<!--                        android:id="@+id/Promo"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:ems="10"-->
+<!--                        android:hint="Enter Promo Code"-->
+<!--                        android:inputType="textPersonName"-->
+<!--                        android:text="" />-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/border"
-                    android:fadingEdge="horizontal|vertical|none"
-                    android:orientation="horizontal"
-                    android:padding="1pt"
-                    android:paddingLeft="1pt"
-                    android:paddingTop="1pt"
-                    android:paddingRight="1pt"
-                    android:paddingBottom="1pt">
-
-
-                    <ImageView
-                        android:id="@+id/imageView11"
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        android:layout_marginTop="45dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/cake" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/ItemName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="Cake"
-                            android:textColor="@color/myTextColor"
-                            android:textSize="24sp" />
-
-                        <Spinner
-                            android:id="@+id/spinnerCart"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="15dp"
-                            android:background="#efefef" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/textPrice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginTop="80dp"
-                        android:layout_weight="1"
-                        android:text="3.50"
-                        android:textColor="@color/myTextColor"
-                        android:textSize="24sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.50">
-
-                    <EditText
-                        android:id="@+id/Promo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Enter Promo Code"
-                        android:inputType="textPersonName"
-
-                        android:text="" />
-                </LinearLayout>
-            </LinearLayout>
-
-
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp" />
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -152,12 +99,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/sTotal"
+                        android:id="@+id/txtSubTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -165,7 +112,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/TaxP"
+                        android:id="@+id/txtTax"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -173,7 +120,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/DCP"
+                        android:id="@+id/txtDeliveryCharge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -181,7 +128,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/Tp"
+                        android:id="@+id/txtTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -191,6 +138,7 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <Button
                 android:id="@+id/btnCheckout"
                 android:layout_width="238dp"
@@ -201,7 +149,10 @@
                 android:text="CheckOut Order"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
+
         </LinearLayout>
-    </ScrollView>
+
+
+    </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>

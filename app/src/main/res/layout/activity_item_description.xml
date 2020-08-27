@@ -136,12 +136,6 @@
                 android:text="Add to Cart"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
-
-
         </LinearLayout>
-
     </ScrollView>
-
-
-
 </LinearLayout>
