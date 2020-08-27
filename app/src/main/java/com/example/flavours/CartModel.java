@@ -1,22 +1,20 @@
 package com.example.flavours;
 
-public class CuisineItemsModel {
+public class CartModel {
     String name;
     String image;
     String price;
-    String desc;
-    String ingredients;
+    String quantity;
     String id;
 
-    public CuisineItemsModel() {
+    public CartModel() {
     }
 
-    public CuisineItemsModel(String name, String image, String price, String desc, String ingredients, String id) {
+    public CartModel(String name, String image, String price, String quantity, String id) {
         this.name = name;
         this.image = image;
         this.price = price;
-        this.desc = desc;
-        this.ingredients = ingredients;
+        this.quantity = quantity;
         this.id = id;
     }
 
@@ -26,22 +24,6 @@ public class CuisineItemsModel {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public String getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
     }
 
     public String getName() {
@@ -66,5 +48,13 @@ public class CuisineItemsModel {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 }

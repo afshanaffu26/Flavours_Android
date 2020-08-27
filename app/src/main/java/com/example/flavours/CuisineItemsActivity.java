@@ -81,6 +81,7 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
                         intent.putExtra("price", model.getPrice());
                         intent.putExtra("desc", model.getDesc());
                         intent.putExtra("ingredients", model.getIngredients());
+                        intent.putExtra("id", model.getId());
                         startActivity(intent);
                     } });
             }
