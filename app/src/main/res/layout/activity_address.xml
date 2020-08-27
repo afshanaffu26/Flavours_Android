@@ -34,6 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:text="Delivery Address"
                     android:textColor="@color/myTextColor"
                     android:textSize="24sp" />
