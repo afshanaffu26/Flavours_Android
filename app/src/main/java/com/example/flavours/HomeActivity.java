@@ -102,7 +102,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }            }
         });*/
     }
-    private void setFragment(Fragment fragment) {
+    public void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction= getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_frame,fragment);
         fragmentTransaction.commit();

@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
@@ -30,6 +32,7 @@ import com.squareup.picasso.Picasso;
 public class HomeFragment extends Fragment {
     String documentId;
     FirebaseFirestore firebaseFirestore;
+    //FloatingActionButton floatingActionButton;
     private FirestoreRecyclerAdapter adapter,adapter1;
     RecyclerView recyclerView,recyclerViewCategory;
     // TODO: Rename parameter arguments, choose names that match
@@ -82,6 +85,17 @@ public class HomeFragment extends Fragment {
         firebaseFirestore = FirebaseFirestore.getInstance();
         recyclerView = v.findViewById(R.id.recyclerView);
         recyclerViewCategory = v.findViewById(R.id.recyclerViewCategory);
+        /*floatingActionButton = v.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CartFragment cartFragment = new CartFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(((ViewGroup)getView().getParent()).getId(), cartFragment, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });*/
 
         //Query
         Query query = firebaseFirestore.collection("VeganMenu");

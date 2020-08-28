@@ -43,7 +43,7 @@ import com.squareup.picasso.Picasso;
  * Use the {@link CartFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CartFragment extends Fragment implements AdapterView.OnItemSelectedListener,View.OnClickListener{
+public class CartFragment extends Fragment implements View.OnClickListener{
 
     ProgressBar progressBar;
     Button btnCheckout;
@@ -103,6 +103,7 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
+
         linearLayout = v.findViewById(R.id.linearLayout);
         txtSubTotal = v.findViewById(R.id.txtSubTotal);
         txtTax = v.findViewById(R.id.txtTax);
@@ -111,52 +112,16 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
         txtEmptyCart = v.findViewById(R.id.txtEmptyCart);
         progressBar = v.findViewById(R.id.progressbar);
         btnCheckout = v.findViewById(R.id.btnCheckout);
+        recyclerView = v.findViewById(R.id.recyclerView);
 
         btnCheckout.setOnClickListener(this);
         firebaseFirestore = FirebaseFirestore.getInstance();
-        recyclerView = v.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        subTotal =0.0;
-        txtEmptyCart.setVisibility(View.GONE);
-        linearLayout.setVisibility(View.GONE);
+
+        loadAndCalculateCartTotal();
+
         //Query
         Query query = firebaseFirestore.collection("Cart");
-        firebaseFirestore.collection("Cart")
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (DocumentSnapshot documentSnapshot : task.getResult()) {
-                        CuisineItemsModel cuisineItemsModel = documentSnapshot.toObject(CuisineItemsModel.class);
-                        double price = Double.parseDouble(cuisineItemsModel.getPrice());
-                        double quantity = Double.parseDouble(cuisineItemsModel.getQuantity());
-                        subTotal += price * quantity;
-                    }
-                    if (!(subTotal == (double)0.0)) {
-                        linearLayout.setVisibility(View.VISIBLE);
-                        txtEmptyCart.setVisibility(View.GONE);
-                    }
-                    else
-                    {
-                        txtEmptyCart.setVisibility(View.VISIBLE);
-                        linearLayout.setVisibility(View.GONE);
-                    }
-                    txtSubTotal.setText(""+subTotal+"$");
-                    double tax = (15.0*subTotal)/100;
-                    txtTax.setText(""+tax+"$");
-                    double delivereyCharge = 3;
-                    txtDeliveryCharge.setText(""+delivereyCharge+"$");
-                    double total = subTotal + tax + delivereyCharge;
-                    txtTotal.setText(""+total+"$");
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getContext(),"Error: "+e.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
-
         //RecyclerOptions
         FirestoreRecyclerOptions<CuisineItemsModel> options = new FirestoreRecyclerOptions.Builder<CuisineItemsModel>()
                 .setQuery(query,CuisineItemsModel.class)
@@ -183,6 +148,7 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
                                 .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
+                                loadAndCalculateCartTotal();
                                 Toast.makeText(getContext(),"Item removed from Cart",Toast.LENGTH_SHORT).show();
                             }
                         })
@@ -217,41 +183,57 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
         recyclerView.setHasFixedSize(false);
         adapter.startListening();
         recyclerView.setAdapter(adapter);
-
-
-//        Spinner spinner =  v.findViewById(R.id.spinnerCart);
-//
-//        // Spinner click listener
-//        spinner.setOnItemSelectedListener(this);
-
-        // Spinner Drop down elements
-//        List<Integer> categories = new ArrayList<>();
-//        for (int i=1;i<=MAX_QUANTITY;i++){
-//            categories.add(i);
-//        }
-//
-//        // Creating adapter for spinner
-//        ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(getContext(), android.R.layout.simple_spinner_dropdown_item, categories);
-//
-//        // Drop down layout style - list view with radio button
-//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//        // attaching data adapter to spinner
-//        spinner.setAdapter(dataAdapter);
-
         return v;
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+    private void loadAndCalculateCartTotal() {
+        subTotal =0.0;
+        txtEmptyCart.setVisibility(View.GONE);
+        linearLayout.setVisibility(View.GONE);
+        firebaseFirestore.collection("Cart")
+                .get().addOnCompleteListener(
+                new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.getResult().size() == 0)
+                            subTotal = 0.0;
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                                CuisineItemsModel cuisineItemsModel = documentSnapshot.toObject(CuisineItemsModel.class);
+                                double price = Double.parseDouble(cuisineItemsModel.getPrice());
+                                double quantity = Double.parseDouble(cuisineItemsModel.getQuantity());
+                                subTotal += price * quantity;
+                            }
 
+                            if (!(subTotal == (double)0.0)) {
+                                linearLayout.setVisibility(View.VISIBLE);
+                                txtEmptyCart.setVisibility(View.GONE);
+                            }
+                            else
+                            {
+                                txtEmptyCart.setVisibility(View.VISIBLE);
+                                linearLayout.setVisibility(View.GONE);
+                            }
+                            calculateTotal(subTotal);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(),"Error: "+e.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
+    private void calculateTotal(double subTotal){
+        txtSubTotal.setText(""+subTotal+"$");
+        double tax = (15.0*subTotal)/100;
+        txtTax.setText(""+tax+"$");
+        double delivereyCharge = 3;
+        txtDeliveryCharge.setText(""+delivereyCharge+"$");
+        double total = subTotal + tax + delivereyCharge;
+        txtTotal.setText(""+total+"$");
     }
-
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnCheckout:
