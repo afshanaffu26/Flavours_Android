@@ -21,7 +21,10 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,9 +35,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
@@ -227,20 +232,72 @@ public class CartFragment extends Fragment implements View.OnClickListener{
 
     private void calculateTotal(double subTotal){
         txtSubTotal.setText(""+subTotal+"$");
-        double tax = (15.0*subTotal)/100;
+        tax = (15.0*subTotal)/100;
         txtTax.setText(""+tax+"$");
-        double delivereyCharge = 3;
-        txtDeliveryCharge.setText(""+delivereyCharge+"$");
-        double total = subTotal + tax + delivereyCharge;
+        deliveryCharge = 3;
+        txtDeliveryCharge.setText(""+deliveryCharge+"$");
+        total = subTotal + tax + deliveryCharge;
         txtTotal.setText(""+total+"$");
     }
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnCheckout:
-                startActivity(new Intent(getContext(), AddressActivity.class));
+                //startActivity(new Intent(getContext(), AddressActivity.class));
+                cartCheckout();
                 break;
         }
     }
+
+    private void cartCheckout() {
+                final String docId = ""+ UUID.randomUUID().toString();
+                firebaseFirestore.collection("Cart")
+                        .get().addOnCompleteListener(
+                        new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                                        CuisineItemsModel cuisineItemsModel = documentSnapshot.toObject(CuisineItemsModel.class);
+                                        firebaseFirestore.collection("Orders").document(docId).collection("Order").add(cuisineItemsModel)
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+                                                Date date = new Date();
+                                                OrdersModel ordersModel = new OrdersModel(date,subTotal,tax,deliveryCharge,total);
+                                                firebaseFirestore.collection("Orders").document(docId).set(ordersModel);
+
+                                                firebaseFirestore.collection("Cart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                        if (task.isSuccessful()) {
+                                                            for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
+                                                                firebaseFirestore.collection("Cart").document(queryDocumentSnapshot.getId()).delete()
+                                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                                        linearLayout.setVisibility(View.GONE);
+                                                                        txtEmptyCart.setVisibility(View.VISIBLE);
+                                                                    }
+                                                                });
+
+                                                            }
+                                                            }
+                                                    }
+                                                });
+                                            }
+                                        });
+
+                                    }
+                                }
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(),"Error: "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
     private class CartViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtName,txtQuantity,txtPrice;
