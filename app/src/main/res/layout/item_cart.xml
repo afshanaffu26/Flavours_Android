@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -51,6 +52,17 @@
             android:textSize="18dp"
             android:text="Qty: 2"
             android:textColor="@color/myTextColor" />
+
 </LinearLayout>
+
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imgDeleteBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right|end|bottom"
+        android:background="@color/colorWhite"
+        app:srcCompat="@drawable/delete_forever_24"
+        tools:ignore="VectorDrawableCompat" />
 </androidx.cardview.widget.CardView>

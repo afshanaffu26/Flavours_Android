@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorWhite"
     android:layout_height="match_parent"
     tools:context=".CartFragment">
     <ProgressBar
@@ -59,6 +60,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -68,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="SubTotal"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/Tax"
@@ -76,7 +78,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Tax"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/DC"
@@ -84,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Delivery Charges"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/Total"
@@ -92,6 +94,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Total"
+                        android:textStyle="bold"
+                        android:textColor="@color/myTextColor"
                         android:textSize="20sp" />
 
                 </LinearLayout>
@@ -100,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:orientation="vertical">
 
                     <TextView
@@ -109,7 +113,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="3.50"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/txtTax"
@@ -117,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="1.25"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/txtDeliveryCharge"
@@ -125,7 +129,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="1.25"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/txtTotal"
@@ -133,7 +137,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="6.00"
-                        android:textSize="20sp" />
+                        android:textStyle="bold"
+                        android:textColor="@color/myTextColor"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -145,6 +151,7 @@
                 android:layout_height="36dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
                 android:background="@color/myMainColor"
                 android:text="CheckOut Order"
                 android:textColor="#FFFFFF"

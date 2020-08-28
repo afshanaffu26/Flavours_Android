@@ -1,11 +1,13 @@
 package com.example.flavours;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,31 +77,40 @@ public class FeedbackFragment extends Fragment implements View.OnClickListener {
         btnDiscard.setOnClickListener(this);
         return v;
     }
-    protected void sendEmail() {
+    private void sendEmailWithoutChooser() {
+        String email = "flavours@gmail.com";
+        String feedback_msg = editTextTextMultiLine.getText().toString().trim();
+        if(feedback_msg.isEmpty()) {
+            Toast.makeText(getContext(), "Please enter your experience..", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        String aEmailList[] = {email};
+        emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, aEmailList);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("<i><font color='your color'>" + feedback_msg + "</font></i>"));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, feedback_msg);
+
+        PackageManager packageManager = getActivity().getPackageManager();
+        boolean isIntentSafe = emailIntent.resolveActivity(packageManager) != null;
+        if (isIntentSafe) {
+            startActivity(emailIntent);
+        } else {
+            Toast.makeText(getActivity(), "Email app is not found", Toast.LENGTH_SHORT).show();
+        }
+}
+    protected void sendEmailWithChooser() {
         String feedbackMessage = editTextTextMultiLine.getText().toString().trim();
         if(feedbackMessage.isEmpty()) {
             Toast.makeText(getContext(), "Please enter your experience..", Toast.LENGTH_SHORT).show();
             return;
         }
-        Log.i("Send email", "");
-        String[] TO = {"flavours@gmail.com"};
-        String[] CC = {""};
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, feedbackMessage);
-
-        try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            //finish();
-            //Log.i("Finished sending email...", "");
-        } catch (android.content.ActivityNotFoundException ex) {
-            //Toast.makeText(MainActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
-        }
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("plain/text");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "flavours@gmail.com" });
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
+        intent.putExtra(Intent.EXTRA_TEXT, feedbackMessage);
+        startActivity(Intent.createChooser(intent, ""));
     }
 
     @Override
@@ -107,7 +118,7 @@ public class FeedbackFragment extends Fragment implements View.OnClickListener {
         switch(view.getId())
         {
             case R.id.btnSend:
-                sendEmail();
+                sendEmailWithoutChooser();
                 break;
             case R.id.btnDiscard:
                 discardEmail();

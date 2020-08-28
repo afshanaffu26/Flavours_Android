@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -110,6 +111,7 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
         txtEmptyCart = v.findViewById(R.id.txtEmptyCart);
         progressBar = v.findViewById(R.id.progressbar);
         btnCheckout = v.findViewById(R.id.btnCheckout);
+
         btnCheckout.setOnClickListener(this);
         firebaseFirestore = FirebaseFirestore.getInstance();
         recyclerView = v.findViewById(R.id.recyclerView);
@@ -173,6 +175,25 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
                 holder.txtQuantity.setText("Qty: "+model.getQuantity());
                 holder.txtPrice.setText("Price: "+model.getPrice()+"$");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
+                holder.imgDeleteBtn.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        documentId = getSnapshots().getSnapshot(position).getId();
+                        firebaseFirestore.collection("Cart").document(documentId)
+                                .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(getContext(),"Item removed from Cart",Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getContext(),"Error: "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
                 holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void
@@ -243,6 +264,8 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
         private TextView txtName,txtQuantity,txtPrice;
         private ImageView imageView;
         LinearLayout linearLayout;
+        ImageButton imgDeleteBtn;
+
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -251,6 +274,8 @@ public class CartFragment extends Fragment implements AdapterView.OnItemSelected
             txtQuantity = itemView.findViewById(R.id.txtQuantity);
             imageView = itemView.findViewById(R.id.imageView);
             linearLayout = itemView.findViewById(R.id.linearLayout);
+            imgDeleteBtn = itemView.findViewById(R.id.imgDeleteBtn);
+
         }
     }
 

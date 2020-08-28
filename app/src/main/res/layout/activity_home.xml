@@ -49,6 +49,7 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.navigation.NavigationView
+        android:background="@color/colorWhite"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:menu="@menu/nav_menu"
