@@ -117,7 +117,6 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.item1:
-            case R.id.item2:
                 showItemDescription();
                 break;
         }

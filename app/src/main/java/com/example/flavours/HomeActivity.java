@@ -14,11 +14,18 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    FirebaseAuth mAuth;
 
     private Toolbar toolbar;
     private boolean isInFront;
@@ -35,6 +42,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private SettingsFragment settingsFragment;
     private HelpFragment helpFragment;
     private SearchFragment searchFragment;
+    private TextView drawerUsername,drawerAccount;
+    private ImageView drawerImage;
 
     @Override
     public void onResume() {
@@ -62,6 +71,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mMainFrame=findViewById(R.id.main_frame);
         //mMainNav=findViewById(R.id.main_nav);
 
+        View headerView = navigationView.getHeaderView(0);
+        drawerImage = (ImageView) headerView.findViewById(R.id.imageView2);
+        drawerUsername = (TextView) headerView.findViewById(R.id.textView3);
+        drawerAccount = (TextView) headerView.findViewById(R.id.textView4);
+
         homeFragment = new HomeFragment();
         cartFragment = new CartFragment();
         helpFragment = new HelpFragment();
@@ -71,6 +85,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         settingsFragment = new SettingsFragment();
         feedbackFragment = new FeedbackFragment();
         searchFragment = new SearchFragment();
+        mAuth = FirebaseAuth.getInstance();
+        setUserDetails();
 
         setFragment(homeFragment);
 
@@ -80,29 +96,36 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 toolbar,
                 R.string.openNavDrawer,
                 R.string.closeNavDrawer
-        );
+        ){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                setUserDetails();
+            }
+
+        };
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        /*mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
-                    case R.id.nav_home:
-                        setFragment(homeFragment);
-                        return true;
-                    case R.id.nav_world:
-                        setFragment(searchFragment);
-                        return true;
-                    case R.id.nav_settings:
-                        setFragment(settingsFragment);
-                        return true;
-                    default:
-                        return false;
-                }            }
-        });*/
+//        mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch(item.getItemId()){
+//                    case R.id.nav_home:
+//                        setFragment(homeFragment);
+//                        return true;
+//                    case R.id.nav_world:
+//                        setFragment(searchFragment);
+//                        return true;
+//                    case R.id.nav_settings:
+//                        setFragment(settingsFragment);
+//                        return true;
+//                    default:
+//                        return false;
+//                }            }
+//        });
     }
-    public void setFragment(Fragment fragment) {
+    private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction= getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_frame,fragment);
         fragmentTransaction.commit();
@@ -113,8 +136,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         int id=item.getItemId();
         switch(id){
             case R.id.menu1home:
-                //                if (!isInFront)
-//                startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+//                if (!isInFront)
+//                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
 //                else
 //                    drawerLayout.closeDrawer(GravityCompat.START);
                 setFragment(homeFragment);
@@ -155,7 +178,28 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
     private void userLogout() {
+        FirebaseAuth.getInstance().signOut();
+        finish();
         Intent i= new Intent(this,LoginActivity.class);
         startActivity(i);
+    }
+    private void setUserDetails() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        drawerUsername.setText("");
+        drawerAccount.setText("");
+        //drawerImage.setImageDrawable(R.drawable.menu);
+        if (user != null) {
+            if (user.getPhotoUrl() != null) {
+                Glide.with(this).load(user.getPhotoUrl().toString()).into(drawerImage);
+            }
+            if (user.getDisplayName() != null) {
+                String displayName = user.getDisplayName();
+                drawerUsername.setText(displayName);
+            }
+            if (user.getEmail() != null) {
+                String emailId = user.getEmail().toString();
+                drawerAccount.setText(emailId);
+            }
+        }
     }
 }

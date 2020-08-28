@@ -34,16 +34,6 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-            <!--                    <EditText-->
-<!--                        android:id="@+id/Promo"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="15dp"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:ems="10"-->
-<!--                        android:hint="Enter Promo Code"-->
-<!--                        android:inputType="textPersonName"-->
-<!--                        android:text="" />-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"

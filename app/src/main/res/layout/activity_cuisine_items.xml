@@ -18,12 +18,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="10dp"
-        android:text="Indian cuisine"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
         android:layout_marginTop="15dp"
-        android:textColor="@color/myTextColor" />
+        android:gravity="center"
+        android:text="Cuisine"
+        android:textColor="@color/myTextColor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
