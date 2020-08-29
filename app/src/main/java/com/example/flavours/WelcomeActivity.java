@@ -22,11 +22,13 @@ public class WelcomeActivity extends AppCompatActivity {
         boolean isFirstTime = MyPreferences.isFirst(WelcomeActivity.this);
         if (!isFirstTime) {
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
         }
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Welcome2Activity.class));
+                
             }
         });
     }

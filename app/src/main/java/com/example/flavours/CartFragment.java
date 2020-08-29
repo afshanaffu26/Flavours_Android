@@ -160,12 +160,12 @@ public class CartFragment extends Fragment implements View.OnClickListener{
                                 Toast.makeText(getContext(),"Item removed from Cart",Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getContext(),"Error: "+e.getMessage(),Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getContext(),"Error: "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                     }
                 });
                 holder.linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -245,61 +245,12 @@ public class CartFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnCheckout:
-                //startActivity(new Intent(getContext(), AddressActivity.class));
-                cartCheckout();
+                startActivity(new Intent(getContext(), AddressActivity.class));
                 break;
         }
     }
 
-    private void cartCheckout() {
-                final String docId = ""+ UUID.randomUUID().toString();
-        firebaseFirestore.collection("Cart").document("cart"+uid).collection("cart")
-                        .get().addOnCompleteListener(
-                        new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (DocumentSnapshot documentSnapshot : task.getResult()) {
-                                        CuisineItemsModel cuisineItemsModel = documentSnapshot.toObject(CuisineItemsModel.class);
-                                        firebaseFirestore.collection("Orders").document("orders"+uid).collection("orders").document(docId).collection("Order").add(cuisineItemsModel)
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                            @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                Date date = new Date();
-                                                OrdersModel ordersModel = new OrdersModel(date,subTotal,tax,deliveryCharge,total);
-                                                firebaseFirestore.collection("Orders").document("orders"+uid).collection("orders").document(docId).set(ordersModel);
 
-                                                firebaseFirestore.collection("Cart").document("cart"+uid).collection("cart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                        if (task.isSuccessful()) {
-                                                            for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
-                                                                firebaseFirestore.collection("Cart").document("cart"+uid).collection("cart").document(queryDocumentSnapshot.getId()).delete()
-                                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                                    @Override
-                                                                    public void onComplete(@NonNull Task<Void> task) {
-                                                                        linearLayout.setVisibility(View.GONE);
-                                                                        txtEmptyCart.setVisibility(View.VISIBLE);
-                                                                    }
-                                                                });
-
-                                                            }
-                                                            }
-                                                    }
-                                                });
-                                            }
-                                        });
-
-                                    }
-                                }
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getContext(),"Error: "+e.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
 
     private class CartViewHolder extends RecyclerView.ViewHolder {
 
