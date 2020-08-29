@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CuisinesActivity"></activity>
+        <activity android:name=".OrderHistoryListActivity"></activity>
+        <activity android:name=".OrderHisoryListActivity" />
+        <activity android:name=".CuisinesActivity" />
         <activity android:name=".CuisineItemsActivity" />
         <activity android:name=".AddressActivity" />
         <activity android:name=".ItemDescriptionActivity" />

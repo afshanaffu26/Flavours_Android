@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
@@ -30,7 +31,9 @@ public class    OrderHistoryFragment extends Fragment {
     FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter;
     RecyclerView recyclerView;
-
+    String orderHistoryDocumentId;
+    LinearLayout linearLayout;
+    TextView txtEmptyOrders;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -79,6 +82,8 @@ public class    OrderHistoryFragment extends Fragment {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         recyclerView = v.findViewById(R.id.recyclerView);
+        linearLayout = v.findViewById(R.id.linearLayout);
+        txtEmptyOrders = v.findViewById(R.id.txtEmptyOrders);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         Query query = firebaseFirestore.collection("Orders");
         FirestoreRecyclerOptions<OrdersModel> options = new FirestoreRecyclerOptions.Builder<OrdersModel>()
@@ -100,18 +105,24 @@ public class    OrderHistoryFragment extends Fragment {
                 holder.txtTax.setText("Tax: "+model.getTax());
                 holder.txtDeliveryCharge.setText("Delivery Charge: "+model.getDeliveryCharge());
                 holder.txtTotal.setText("Total: "+model.getTotal());
+                if (adapter.getItemCount() != 0)
+                {
+                    txtEmptyOrders.setVisibility(View.GONE);
+                    linearLayout.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    txtEmptyOrders.setVisibility(View.VISIBLE);
+                    linearLayout.setVisibility(View.GONE);
+                }
                 holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(view.getContext(), CuisineItemsActivity.class);
-//                        intent.putExtra("name", model.getName());
-//                        intent.putExtra("image", model.getImage());
-//                        intent.putExtra("price", model.getPrice());
-//                        intent.putExtra("desc", model.getDesc());
-//                        intent.putExtra("ingredients", model.getIngredients());
-//                        documentId = getSnapshots().getSnapshot(position).getId();
-//                        intent.putExtra("documentId", documentId);
-                //        startActivity(intent);
+                        Intent intent = new Intent(view.getContext(), OrderHistoryListActivity.class);
+                        //DocumentSnapshot snapshot = getSnapshots().getSnapshot(holder.getAdapterPosition());
+                        orderHistoryDocumentId = getSnapshots().getSnapshot(position).getId();
+                        intent.putExtra("orderHistoryDocumentId", orderHistoryDocumentId);
+                        startActivity(intent);
                     } });
             }
         };

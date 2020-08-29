@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".OrderHistoryFragment">
+    android:orientation="vertical"
+    tools:context=".OrderHistoryListActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
     <TextView
-        android:id="@+id/txtEmptyOrders"
+        android:id="@+id/txtCuisine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="No orders yet!" />
-<LinearLayout
-    android:id="@+id/linearLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+        android:text="Order History"
+        android:textColor="@color/myTextColor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="0dp"
                 android:layout_marginLeft="0dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="300dp"
                 android:id="@+id/recyclerView"/>
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>
-</FrameLayout>
