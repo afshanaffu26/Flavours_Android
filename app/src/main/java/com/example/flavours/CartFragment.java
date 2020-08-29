@@ -180,7 +180,6 @@ public class CartFragment extends Fragment implements View.OnClickListener{
                         intent.putExtra("ingredients", model.getIngredients());
                         intent.putExtra("quantity",model.getQuantity());
                         documentId = getSnapshots().getSnapshot(position).getId();
-                        intent.putExtra("documentId", documentId);
                         startActivity(intent);
                     } });
                 progressBar.setVisibility(View.GONE);
@@ -245,7 +244,12 @@ public class CartFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnCheckout:
-                startActivity(new Intent(getContext(), AddressActivity.class));
+                Intent intent = new Intent(getContext(),AddressActivity.class);
+                intent.putExtra("subTotal", ""+subTotal);
+                intent.putExtra("tax", ""+tax);
+                intent.putExtra("deliveryCharge", ""+deliveryCharge);
+                intent.putExtra("total", ""+total);
+                startActivity(intent);
                 break;
         }
     }

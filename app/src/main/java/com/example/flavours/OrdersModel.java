@@ -7,15 +7,15 @@ import java.util.Date;
 public class OrdersModel {
     @ServerTimestamp
     private Date date;
-    private double subtotal;
-    private double tax;
-    private double deliveryCharge;
-    private double total;
+    private String subtotal;
+    private String tax;
+    private String deliveryCharge;
+    private String total;
 
     public OrdersModel() {
     }
 
-    public OrdersModel(Date date, double subtotal, double tax, double deliveryCharge, double total) {
+    public OrdersModel(Date date, String subtotal, String tax, String deliveryCharge, String total) {
         this.date = date;
         this.subtotal = subtotal;
         this.tax = tax;
@@ -31,35 +31,35 @@ public class OrdersModel {
         this.date = date;
     }
 
-    public double getSubtotal() {
+    public String getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(double subtotal) {
+    public void setSubtotal(String subtotal) {
         this.subtotal = subtotal;
     }
 
-    public double getTax() {
+    public String getTax() {
         return tax;
     }
 
-    public void setTax(double tax) {
+    public void setTax(String tax) {
         this.tax = tax;
     }
 
-    public double getDeliveryCharge() {
+    public String getDeliveryCharge() {
         return deliveryCharge;
     }
 
-    public void setDeliveryCharge(double deliveryCharge) {
+    public void setDeliveryCharge(String deliveryCharge) {
         this.deliveryCharge = deliveryCharge;
     }
 
-    public double getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 }

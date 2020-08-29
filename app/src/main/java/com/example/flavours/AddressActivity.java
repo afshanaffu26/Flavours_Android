@@ -30,6 +30,7 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
     String name,apt,add,city,postalID;
     FirebaseFirestore firebaseFirestore;
     String uid;
+    String subTotal,deliveryCharge,tax,total;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -82,7 +83,7 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                        goToPayment();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -92,4 +93,20 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 });
     }
+
+    private void goToPayment() {
+        Intent intent = new Intent(getApplicationContext(),PaymentActivity.class);
+        subTotal = getIntent().getStringExtra("subTotal");
+        tax = getIntent().getStringExtra("tax");
+        deliveryCharge = getIntent().getStringExtra("deliveryCharge");
+        total = getIntent().getStringExtra("total");
+
+        intent.putExtra("subTotal", subTotal);
+        intent.putExtra("tax", tax);
+        intent.putExtra("deliveryCharge", deliveryCharge);
+        intent.putExtra("total", total);
+        startActivity(intent);
+    }
+
+
 }

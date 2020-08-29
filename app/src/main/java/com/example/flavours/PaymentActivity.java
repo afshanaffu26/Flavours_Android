@@ -28,7 +28,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     Button btnPay;
     FirebaseFirestore firebaseFirestore;
     String uid;
-    double subTotal,deliveryCharge,tax,total;
+    String subTotal,deliveryCharge,tax,total;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -64,6 +64,11 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                             firebaseFirestore.collection("Orders").document("orders" + uid).collection("orders").document(docId).collection("Order").add(cuisineItemsModel).addOnSuccessListener(new OnSuccessListener < DocumentReference > () {@Override
                             public void onSuccess(DocumentReference documentReference) {
                                 Date date = new Date();
+                                subTotal = getIntent().getStringExtra("subTotal");
+                                tax = getIntent().getStringExtra("tax");
+                                deliveryCharge = getIntent().getStringExtra("deliveryCharge");
+                                total = getIntent().getStringExtra("total");
+
                                 OrdersModel ordersModel = new OrdersModel(date, subTotal, tax, deliveryCharge, total);
                                 firebaseFirestore.collection("Orders").document("orders" + uid).collection("orders").document(docId).set(ordersModel);
                                 firebaseFirestore.collection("Cart").document("cart" + uid).collection("cart").get().addOnCompleteListener(new OnCompleteListener < QuerySnapshot > () {@Override
