@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Flavours</string>
     <string name="openNavDrawer">Navigation Bar open</string>
     <string name="closeNavDrawer">Navigation Bar closed</string>
@@ -37,5 +37,6 @@ Ingredients: Distilled Vinegar, Water, Mustard Seed, Salt, Turmeric, Paprika, Sp
 
 Grill Seasoning
 Ingredients: Salt, Pepper.</string>
+
 
 </resources>
