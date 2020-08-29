@@ -48,6 +48,8 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
             query = firebaseFirestore.collection("IndianMenu");
         else if (cuisine.equals("Chinese"))
             query = firebaseFirestore.collection("ChineseMenu");
+        else if (cuisine.equals("Italian"))
+            query = firebaseFirestore.collection("Italian");
         else
             query = firebaseFirestore.collection("VeganMenu");
 
@@ -87,7 +89,9 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
                     } });
             }
         };
-        recyclerView.setHasFixedSize(true);
+
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setHasFixedSize(false);
         recyclerView.setAdapter(adapter);
     }
     private class CuisinesItemsViewHolder extends RecyclerView.ViewHolder {

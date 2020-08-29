@@ -32,9 +32,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 /**
+ * This fragment deals with cart related activities.
  * A simple {@link Fragment} subclass.
  * Use the {@link CartFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class CartFragment extends Fragment implements View.OnClickListener{
 
@@ -84,6 +84,11 @@ public class CartFragment extends Fragment implements View.OnClickListener{
         return fragment;
     }
 
+    /**
+     * Called to do initial creation of a fragment
+     * Note that this can be called while the fragment's activity is still in the process of being created. As such, you can not rely on things like the activity's content view hierarchy being initialized at this point. If you want to do work once the activity itself is created, add a {@link androidx.lifecycle.LifecycleObserver} on the activity's Lifecycle, removing it when it receives the Lifecycle.State.CREATED callback.
+     * @param savedInstanceState If the fragment is being re-created from a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +98,13 @@ public class CartFragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    /**
+     * Called to have the fragment instantiate its user interface view. This is optional, and non-graphical fragments can return null. This will be called between onCreate(Bundle) and onViewCreated(View, Bundle).
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to. The fragment should not add the view itself, but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return Return the View for the fragment's UI, or null.
+     */
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -181,6 +193,9 @@ public class CartFragment extends Fragment implements View.OnClickListener{
         return v;
     }
 
+    /**
+     * This method is used to calculate cart total depending on selected items
+     */
     private void loadAndCalculateCartTotal() {
         subTotal =0.0;
         txtEmptyCart.setVisibility(View.GONE);
@@ -220,6 +235,10 @@ public class CartFragment extends Fragment implements View.OnClickListener{
         });
     }
 
+    /**
+     * This method is used to calculate the total amount including taxes and delivery fees
+     * @param subTotal This param is total before taxes
+     */
     private void calculateTotal(double subTotal){
         txtSubTotal.setText(""+subTotal+"$");
         tax = (15.0*subTotal)/100;
@@ -229,6 +248,10 @@ public class CartFragment extends Fragment implements View.OnClickListener{
         total = subTotal + tax + deliveryCharge;
         txtTotal.setText(""+total+"$");
     }
+    /**
+     * Called when a view has been clicked.
+     * @param view The view that was clicked.
+     */
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnCheckout:
@@ -242,6 +265,10 @@ public class CartFragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    /**
+     * This class binds the recycler view with item
+     * Subclass of {@link RecyclerView.ViewHolder}
+     */
     private class CartViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtName,txtQuantity,txtPrice;

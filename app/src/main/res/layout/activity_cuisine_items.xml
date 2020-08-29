@@ -7,7 +7,6 @@
     android:background="@color/colorWhite"
     android:orientation="vertical"
     tools:context=".CuisineItemsActivity">
-
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
@@ -23,19 +22,24 @@
         android:textColor="@color/myTextColor"
         android:textSize="20sp"
         android:textStyle="bold" />
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="0dp"
-                android:layout_marginLeft="0dp"
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:id="@+id/recyclerView"/>
+                android:layout_height="match_parent"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp" />
         </RelativeLayout>
-    </ScrollView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

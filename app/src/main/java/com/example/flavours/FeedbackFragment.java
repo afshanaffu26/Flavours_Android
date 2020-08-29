@@ -89,7 +89,7 @@ public class FeedbackFragment extends Fragment implements View.OnClickListener {
         emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, aEmailList);
         emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("<i><font color='your color'>" + feedback_msg + "</font></i>"));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, feedback_msg);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
 
         PackageManager packageManager = getActivity().getPackageManager();
         boolean isIntentSafe = emailIntent.resolveActivity(packageManager) != null;
