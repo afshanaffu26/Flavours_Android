@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorWhite"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddressActivity">
@@ -93,7 +94,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editAddressId"
+                    android:id="@+id/editAddress"
                     android:layout_width="340dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
