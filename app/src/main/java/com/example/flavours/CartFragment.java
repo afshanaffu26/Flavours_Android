@@ -167,6 +167,7 @@ public class CartFragment extends Fragment implements View.OnClickListener{
                         intent.putExtra("ingredients", model.getIngredients());
                         intent.putExtra("quantity",model.getQuantity());
                         documentId = getSnapshots().getSnapshot(position).getId();
+                        intent.putExtra("documentId",documentId);
                         startActivity(intent);
                     } });
                 progressBar.setVisibility(View.GONE);
@@ -241,15 +242,12 @@ public class CartFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-
-
     private class CartViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtName,txtQuantity,txtPrice;
         private ImageView imageView;
         LinearLayout linearLayout;
         ImageButton imgDeleteBtn;
-
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -259,7 +257,6 @@ public class CartFragment extends Fragment implements View.OnClickListener{
             imageView = itemView.findViewById(R.id.imageView);
             linearLayout = itemView.findViewById(R.id.linearLayout);
             imgDeleteBtn = itemView.findViewById(R.id.imgDeleteBtn);
-
         }
     }
 

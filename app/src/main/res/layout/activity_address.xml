@@ -27,7 +27,7 @@
                 android:id="@+id/txt_payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="30dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:text="Delivery Address"
@@ -45,9 +45,10 @@
 
             <EditText
                 android:id="@+id/editName"
-                android:layout_width="340dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:ems="10"
                 android:inputType="textEmailAddress" />
 
@@ -64,9 +65,10 @@
 
             <EditText
                 android:id="@+id/editApt"
-                android:layout_width="340dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:ems="10"
                 android:inputType="text" />
 
@@ -82,9 +84,10 @@
 
             <EditText
                 android:id="@+id/editCity"
-                android:layout_width="340dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:ems="10"
                 android:inputType="text" />
 
@@ -100,9 +103,10 @@
 
             <EditText
                 android:id="@+id/editProvince"
-                android:layout_width="340dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:ems="10"
                 android:inputType="text" />
             <TextView
@@ -117,9 +121,10 @@
 
             <EditText
                 android:id="@+id/editCountry"
-                android:layout_width="340dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:ems="10"
                 android:inputType="text" />
             <TextView
@@ -134,18 +139,19 @@
 
             <EditText
                 android:id="@+id/editPostalID"
-                android:layout_width="340dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:ems="10"
                 android:inputType="textPostalAddress" />
 
             <Button
                 android:id="@+id/btnNext"
-                android:layout_width="214dp"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:background="@color/myMainColor"
                 android:text="Next"
                 android:textColor="#FFFFFF"
