@@ -5,29 +5,30 @@ import com.google.firebase.firestore.ServerTimestamp;
 import java.util.Date;
 
 public class OrdersModel {
-    @ServerTimestamp
-    private Date date;
+    private String date;
     private String subtotal;
     private String tax;
     private String deliveryCharge;
     private String total;
+    private String address;
 
     public OrdersModel() {
     }
 
-    public OrdersModel(Date date, String subtotal, String tax, String deliveryCharge, String total) {
+    public OrdersModel(String date, String subtotal, String tax, String deliveryCharge, String total, String address) {
         this.date = date;
         this.subtotal = subtotal;
         this.tax = tax;
         this.deliveryCharge = deliveryCharge;
         this.total = total;
+        this.address = address;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -61,5 +62,13 @@ public class OrdersModel {
 
     public void setTotal(String total) {
         this.total = total;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

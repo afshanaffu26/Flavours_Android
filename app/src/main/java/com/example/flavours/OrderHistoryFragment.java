@@ -28,7 +28,7 @@ import com.squareup.picasso.Picasso;
  * Use the {@link OrderHistoryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class    OrderHistoryFragment extends Fragment {
+public class OrderHistoryFragment extends Fragment {
     FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter;
     RecyclerView recyclerView;
@@ -68,6 +68,11 @@ public class    OrderHistoryFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * Called to do initial creation of a fragment
+     * Note that this can be called while the fragment's activity is still in the process of being created. As such, you can not rely on things like the activity's content view hierarchy being initialized at this point. If you want to do work once the activity itself is created, add a {@link androidx.lifecycle.LifecycleObserver} on the activity's Lifecycle, removing it when it receives the Lifecycle.State.CREATED callback.
+     * @param savedInstanceState If the fragment is being re-created from a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +82,13 @@ public class    OrderHistoryFragment extends Fragment {
         }
     }
 
+    /**
+     * Called to have the fragment instantiate its user interface view. This is optional, and non-graphical fragments can return null. This will be called between onCreate(Bundle) and onViewCreated(View, Bundle).
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to. The fragment should not add the view itself, but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return Return the View for the fragment's UI, or null.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -110,6 +122,7 @@ public class    OrderHistoryFragment extends Fragment {
                 holder.txtTax.setText("Tax: "+model.getTax());
                 holder.txtDeliveryCharge.setText("Delivery Charge: "+model.getDeliveryCharge());
                 holder.txtTotal.setText("Total: "+model.getTotal());
+                holder.txtAddress.setText("Address: "+model.getAddress());
                 if (adapter.getItemCount() != 0)
                 {
                     txtEmptyOrders.setVisibility(View.GONE);
@@ -136,9 +149,14 @@ public class    OrderHistoryFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         return v;
     }
+
+    /**
+     * This class binds the recycler view with item
+     * Subclass of {@link RecyclerView.ViewHolder}
+     */
     private class OrderHistoryViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtOrderDate,txtSubTotal,txtTax,txtDeliveryCharge,txtTotal,txtOrderId;
+        private TextView txtOrderDate,txtSubTotal,txtTax,txtDeliveryCharge,txtTotal,txtAddress;
         private LinearLayout linearLayout;
         public OrderHistoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -147,6 +165,7 @@ public class    OrderHistoryFragment extends Fragment {
             txtTax = itemView.findViewById(R.id.txtTax);
             txtDeliveryCharge = itemView.findViewById(R.id.txtDeliveryCharge);
             txtTotal = itemView.findViewById(R.id.txtTotal);
+            txtAddress = itemView.findViewById(R.id.txtAddress);
             linearLayout = itemView.findViewById(R.id.linearLayout);
         }
     }

@@ -24,14 +24,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * This class manages user address to proceed with order
+ */
 public class AddressActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnNext;
-    EditText editName,editApt,editAddress,editCity,editPostalID;
-    String name,apt,add,city,postalID;
+    EditText editName,editApt,editProvince,editCity,editPostalID,editCountry;
+    String name,apt,province,city,postalID,country;
     FirebaseFirestore firebaseFirestore;
     String uid;
     String subTotal,deliveryCharge,tax,total;
 
+    /**
+     * This method is called whenever the user chooses to navigate Up within your application's activity hierarchy from the action bar.
+     * @return boolean:true if Up navigation completed successfully and this Activity was finished, false otherwise.
+     */
     @Override
     public boolean onSupportNavigateUp() {
         finish();
@@ -51,9 +58,10 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
 
         editName = findViewById(R.id.editName);
         editApt = findViewById(R.id.editApt);
-        editAddress = findViewById(R.id.editAddress);
+        editProvince = findViewById(R.id.editProvince);
         editCity = findViewById(R.id.editCity);
         editPostalID = findViewById(R.id.editPostalID);
+        editCountry = findViewById(R.id.editCountry);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -61,14 +69,12 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    /**
+     * Called when a view has been clicked.
+     * @param view The view that was clicked.
+     */
     @Override
     public void onClick(View view) {
-        name = editName.getText().toString();
-        apt = editApt.getText().toString();
-        add = editAddress.getText().toString();
-        city = editCity.getText().toString();
-        postalID = editPostalID.getText().toString();
-
         switch (view.getId()) {
             case R.id.btnNext:
                 addAddress();
@@ -76,9 +82,58 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    /**
+     * This method stores the provided address to database.
+     */
     private void addAddress() {
+        name = editName.getText().toString();
+        apt = editApt.getText().toString();
+        province = editProvince.getText().toString();
+        city = editCity.getText().toString();
+        postalID = editPostalID.getText().toString();
+        country = editCountry.getText().toString();
+
+        if(name.isEmpty())
+        {
+            editName.setError("Street name is required");
+            editName.requestFocus();
+            return;
+        }
+        if(apt.isEmpty())
+        {
+            editApt.setError("Apt/Suit# is required");
+            editApt.requestFocus();
+            return;
+        }
+        if(city.isEmpty())
+        {
+            editCity.setError("City is required");
+            editCity.requestFocus();
+            return;
+        }
+        if(province.isEmpty())
+        {
+            editProvince.setError("Province is required");
+            editProvince.requestFocus();
+            return;
+        }
+        if(country.isEmpty())
+        {
+            editCountry.setError("Country is required");
+            editCountry.requestFocus();
+            return;
+        }
+        if(postalID.isEmpty())
+        {
+            editPostalID.setError("Postal code is required");
+            editPostalID.requestFocus();
+            return;
+        }
+
+
+
         Map<String, Object> address = new HashMap<>();
-        address.put("address", ""+name+" "+apt+" "+add+" "+city+" "+postalID);
+        address.put("address", ""+name+" "+apt+" "+city+" "+province+" "+country+" "+postalID);
         firebaseFirestore.collection("Address").document(uid).set(address)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -94,6 +149,9 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
                 });
     }
 
+    /**
+     * Navigates to payment page to show break up of total amount being charged.
+     */
     private void goToPayment() {
         Intent intent = new Intent(getApplicationContext(),PaymentActivity.class);
         subTotal = getIntent().getStringExtra("subTotal");
