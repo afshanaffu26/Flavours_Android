@@ -59,13 +59,15 @@ public class OrderHistoryListActivity extends AppCompatActivity{
             @NonNull
             @Override
             public OrderHistoryListActivity.OrderHistoryListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu,parent,false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_history_list,parent,false);
                 return new OrderHistoryListActivity.OrderHistoryListViewHolder(view);
             }
 
             @Override
             protected void onBindViewHolder(@NonNull OrderHistoryListActivity.OrderHistoryListViewHolder holder, final int position, @NonNull final CuisineItemsModel model) {
                 holder.txtName.setText(model.getName());
+                holder.txtPrice.setText("Price: "+model.getPrice());
+                holder.txtQuantity.setText("Qty: "+model.getQuantity());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
                 holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -87,12 +89,14 @@ public class OrderHistoryListActivity extends AppCompatActivity{
     }
     private class OrderHistoryListViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtName;
+        private TextView txtName,txtQuantity,txtPrice;
         private ImageView imageView;
-        private LinearLayout linearLayout;
+        LinearLayout linearLayout;
         public OrderHistoryListViewHolder(@NonNull View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.txtName);
+            txtPrice = itemView.findViewById(R.id.txtPrice);
+            txtQuantity = itemView.findViewById(R.id.txtQuantity);
             imageView = itemView.findViewById(R.id.imageView);
             linearLayout = itemView.findViewById(R.id.linearLayout);
         }

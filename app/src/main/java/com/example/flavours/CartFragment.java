@@ -147,6 +147,8 @@ public class CartFragment extends Fragment implements View.OnClickListener{
                 holder.txtQuantity.setText("Qty: "+model.getQuantity());
                 holder.txtPrice.setText("Price: "+model.getPrice()+"$");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
+                loadAndCalculateCartTotal();
+
                 holder.imgDeleteBtn.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View view) {

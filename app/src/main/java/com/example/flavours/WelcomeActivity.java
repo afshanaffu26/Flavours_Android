@@ -28,7 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Welcome2Activity.class));
-
+                finish();
             }
         });
     }

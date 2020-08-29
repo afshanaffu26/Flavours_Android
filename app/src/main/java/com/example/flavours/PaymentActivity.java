@@ -88,9 +88,13 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                                                         if (task.isSuccessful()) {
                                                             Toast.makeText(getApplicationContext(), "Order placed successfully.", Toast.LENGTH_SHORT).show();
                                                             for (QueryDocumentSnapshot queryDocumentSnapshot: task.getResult()) {
-                                                                firebaseFirestore.collection("Cart").document("cart" + uid).collection("cart").document(queryDocumentSnapshot.getId()).delete();
+                                                                firebaseFirestore.collection("Cart").document("cart" + uid).collection("cart").document(queryDocumentSnapshot.getId()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                    @Override
+                                                                    public void onSuccess(Void aVoid) {
+                                                                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                                                                    }
+                                                                });
                                                             }
-                                                            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                                                         }
                                                     }
                                                 });

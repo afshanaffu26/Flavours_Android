@@ -145,7 +145,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(getApplicationContext(), "User profile Updated", Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(getApplicationContext(), "User profile Updated", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -153,7 +153,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     //FirebaseAuth.getInstance().signOut();
                     finish();
                     //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-                    Toast.makeText(getApplicationContext(), "Welcome user", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Welcome to Flavours!", Toast.LENGTH_SHORT).show();
                     //}
                 }
                 else
