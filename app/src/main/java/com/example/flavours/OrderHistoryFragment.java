@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -34,6 +35,8 @@ public class    OrderHistoryFragment extends Fragment {
     String orderHistoryDocumentId;
     LinearLayout linearLayout;
     TextView txtEmptyOrders;
+    String uid;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -84,8 +87,10 @@ public class    OrderHistoryFragment extends Fragment {
         recyclerView = v.findViewById(R.id.recyclerView);
         linearLayout = v.findViewById(R.id.linearLayout);
         txtEmptyOrders = v.findViewById(R.id.txtEmptyOrders);
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        Query query = firebaseFirestore.collection("Orders");
+        Query query = firebaseFirestore.collection("Orders").document("orders"+uid).collection("orders");
         FirestoreRecyclerOptions<OrdersModel> options = new FirestoreRecyclerOptions.Builder<OrdersModel>()
                 .setQuery(query,OrdersModel.class)
                 .build();

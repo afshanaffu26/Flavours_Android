@@ -35,6 +35,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -50,6 +51,7 @@ import com.squareup.picasso.Picasso;
  */
 public class CartFragment extends Fragment implements View.OnClickListener{
 
+    String uid;
     ProgressBar progressBar;
     Button btnCheckout;
     FirebaseFirestore firebaseFirestore;
@@ -122,11 +124,12 @@ public class CartFragment extends Fragment implements View.OnClickListener{
         btnCheckout.setOnClickListener(this);
         firebaseFirestore = FirebaseFirestore.getInstance();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         loadAndCalculateCartTotal();
 
         //Query
-        Query query = firebaseFirestore.collection("Cart");
+        Query query = firebaseFirestore.collection("Cart").document("cart"+uid).collection("cart");
         //RecyclerOptions
         FirestoreRecyclerOptions<CuisineItemsModel> options = new FirestoreRecyclerOptions.Builder<CuisineItemsModel>()
                 .setQuery(query,CuisineItemsModel.class)
@@ -149,7 +152,7 @@ public class CartFragment extends Fragment implements View.OnClickListener{
                     @Override
                     public void onClick(View view) {
                         documentId = getSnapshots().getSnapshot(position).getId();
-                        firebaseFirestore.collection("Cart").document(documentId)
+                        firebaseFirestore.collection("Cart").document("cart"+uid).collection("cart").document(documentId)
                                 .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -195,7 +198,7 @@ public class CartFragment extends Fragment implements View.OnClickListener{
         subTotal =0.0;
         txtEmptyCart.setVisibility(View.GONE);
         linearLayout.setVisibility(View.GONE);
-        firebaseFirestore.collection("Cart")
+        firebaseFirestore.collection("Cart").document("cart"+uid).collection("cart")
                 .get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -250,7 +253,7 @@ public class CartFragment extends Fragment implements View.OnClickListener{
 
     private void cartCheckout() {
                 final String docId = ""+ UUID.randomUUID().toString();
-                firebaseFirestore.collection("Cart")
+        firebaseFirestore.collection("Cart").document("cart"+uid).collection("cart")
                         .get().addOnCompleteListener(
                         new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -258,20 +261,20 @@ public class CartFragment extends Fragment implements View.OnClickListener{
                                 if (task.isSuccessful()) {
                                     for (DocumentSnapshot documentSnapshot : task.getResult()) {
                                         CuisineItemsModel cuisineItemsModel = documentSnapshot.toObject(CuisineItemsModel.class);
-                                        firebaseFirestore.collection("Orders").document(docId).collection("Order").add(cuisineItemsModel)
+                                        firebaseFirestore.collection("Orders").document("orders"+uid).collection("orders").document(docId).collection("Order").add(cuisineItemsModel)
                                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                             @Override
                                             public void onSuccess(DocumentReference documentReference) {
                                                 Date date = new Date();
                                                 OrdersModel ordersModel = new OrdersModel(date,subTotal,tax,deliveryCharge,total);
-                                                firebaseFirestore.collection("Orders").document(docId).set(ordersModel);
+                                                firebaseFirestore.collection("Orders").document("orders"+uid).collection("orders").document(docId).set(ordersModel);
 
-                                                firebaseFirestore.collection("Cart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                firebaseFirestore.collection("Cart").document("cart"+uid).collection("cart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                                         if (task.isSuccessful()) {
                                                             for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
-                                                                firebaseFirestore.collection("Cart").document(queryDocumentSnapshot.getId()).delete()
+                                                                firebaseFirestore.collection("Cart").document("cart"+uid).collection("cart").document(queryDocumentSnapshot.getId()).delete()
                                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                     @Override
                                                                     public void onComplete(@NonNull Task<Void> task) {

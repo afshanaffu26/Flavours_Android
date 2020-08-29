@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
@@ -98,7 +99,9 @@ public class ItemDescriptionActivity extends AppCompatActivity implements Adapte
 
     private void addItemToCart(String name, String image, String quantity, String price,String desc,String ingredients) {
         CuisineItemsModel cuisineItemsModel = new CuisineItemsModel(name, image, price,desc,ingredients,quantity);
-        firebaseFirestore.collection("Cart").document(documentId)
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        firebaseFirestore.collection("Cart").document("cart"+uid).collection("cart").document(documentId)
                 .set(cuisineItemsModel)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

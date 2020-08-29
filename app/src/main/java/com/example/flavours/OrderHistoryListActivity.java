@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
@@ -28,6 +29,8 @@ public class OrderHistoryListActivity extends AppCompatActivity{
     String cuisine ="";
     TextView txtCuisine;
     String documentId,orderHistoryDocumentId;
+    String uid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +44,12 @@ public class OrderHistoryListActivity extends AppCompatActivity{
         firebaseFirestore = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recyclerView);
         txtCuisine = findViewById(R.id.txtCuisine);
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         orderHistoryDocumentId = getIntent().getStringExtra("orderHistoryDocumentId");
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        Query query = firebaseFirestore.collection("Orders").document(orderHistoryDocumentId).collection("Order");
+        Query query = firebaseFirestore.collection("Orders").document("orders"+uid).collection("orders").document(orderHistoryDocumentId).collection("Order");
         //RecyclerOptions
         FirestoreRecyclerOptions<CuisineItemsModel> options = new FirestoreRecyclerOptions.Builder<CuisineItemsModel>()
                 .setQuery(query,CuisineItemsModel.class)
