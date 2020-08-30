@@ -61,11 +61,7 @@ public class CartFragment extends Fragment implements View.OnClickListener{
     public CartFragment() {
         // Required empty public constructor
     }
-//    private RecyclerViewReadyCallback recyclerViewReadyCallback;
-//
-//    public interface RecyclerViewReadyCallback {
-//        void onLayoutReady();
-//    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.

@@ -6,23 +6,18 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * This class manages user address to proceed with order
@@ -36,7 +31,7 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
     String subTotal,deliveryCharge,tax,total;
 
     /**
-     * This method is called whenever the user chooses to navigate Up within your application's activity hierarchy from the action bar.
+     * This method is called whenever the user chooses to navigate up within your application's activity hierarchy from the action bar.
      * @return boolean:true if Up navigation completed successfully and this Activity was finished, false otherwise.
      */
     @Override
@@ -129,9 +124,7 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
             editPostalID.requestFocus();
             return;
         }
-
-
-
+        
         Map<String, Object> address = new HashMap<>();
         address.put("address", ""+name+" "+apt+" "+city+" "+province+" "+country+" "+postalID);
         firebaseFirestore.collection("Address").document(uid).set(address)
