@@ -8,12 +8,17 @@ public class CartModel {
     String image;
     String price;
     String quantity;
-    String desc;
-    String ingredients;
 
     public CartModel() {
     }
 
+    /**
+     * Constructor to initialize name, image, price and quantity of product
+     * @param name Product name
+     * @param image Product image
+     * @param price Product price
+     * @param quantity Product quantity
+     */
     public CartModel(String name, String image, String price, String quantity) {
         this.name = name;
         this.image = image;

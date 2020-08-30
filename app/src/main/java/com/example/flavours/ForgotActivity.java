@@ -16,6 +16,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ *  this class deals with password reset
+ */
 public class ForgotActivity extends AppCompatActivity implements View.OnClickListener{
     Button btnSubmit;
     FirebaseAuth mAuth;
@@ -44,6 +47,10 @@ public class ForgotActivity extends AppCompatActivity implements View.OnClickLis
         progressBar=findViewById(R.id.progressbar);
     }
 
+    /**
+     * Called when a view has been clicked.
+     * @param view The view that was clicked.
+     */
     @Override
     public void onClick(View view) {
         switch(view.getId()){
@@ -52,6 +59,11 @@ public class ForgotActivity extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
+
+    /**
+     * This method submits entered email to Firebase to send a reset password link
+     * Email: mandatory, if not entered validation error occurs.
+     */
     public void submitEmail() {
         String email = editEmail.getText().toString().trim();
 

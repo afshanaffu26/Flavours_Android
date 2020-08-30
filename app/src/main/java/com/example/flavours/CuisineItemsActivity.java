@@ -21,6 +21,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
+/**
+ * This class deals with cuisine related products
+ */
 public class CuisineItemsActivity extends AppCompatActivity implements View.OnClickListener {
     FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter;
@@ -117,6 +120,10 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
         super.onStop();
         adapter.stopListening();
     }
+    /**
+     * Called when a view has been clicked.
+     * @param view The view that was clicked.
+     */
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
@@ -126,11 +133,19 @@ public class CuisineItemsActivity extends AppCompatActivity implements View.OnCl
         }
 
     }
+
+    /**
+     * This method navigates to Product description page
+     */
     private void showItemDescription() {
         Intent i = new Intent(CuisineItemsActivity.this,ItemDescriptionActivity.class);
         startActivity(i);
     }
 
+    /**
+     * This method is called whenever the user chooses to navigate up within your application's activity hierarchy from the action bar.
+     * @return boolean:true if Up navigation completed successfully and this Activity was finished, false otherwise.
+     */
     @Override
     public boolean onSupportNavigateUp() {
         finish();

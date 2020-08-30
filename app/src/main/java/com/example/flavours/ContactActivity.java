@@ -15,10 +15,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+/**
+ * This class deals with contact us details
+ */
 public class ContactActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView imgCall1,imgCall2;
     String number;
 
+    /**
+     * This method is called whenever the user chooses to navigate up within your application's activity hierarchy from the action bar.
+     * @return boolean:true if Up navigation completed successfully and this Activity was finished, false otherwise.
+     */
     @Override
     public boolean onSupportNavigateUp() {
         finish();
@@ -41,6 +48,10 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         imgCall2.setOnClickListener(this);
     }
 
+    /**
+     * Called when a view has been clicked.
+     * @param view The view that was clicked.
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onClick(View view) {
@@ -56,6 +67,10 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
             }
     }
 
+    /**
+     * this method places a call to provided number by using native dialing
+     * @param number Phone number to place a call.
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void callToHelplineNumber(String number) {
         Intent intentCall = new Intent(Intent.ACTION_CALL);
@@ -71,6 +86,9 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    /**
+     * This method is used to request permission to access phone.
+     */
     private void requestPermissions() {
         ActivityCompat.requestPermissions(ContactActivity.this,new String[]{Manifest.permission.CALL_PHONE},1);
     }

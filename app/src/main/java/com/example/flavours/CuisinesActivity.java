@@ -26,10 +26,19 @@ import com.squareup.picasso.Picasso;
 
 
 // Not used
+
+/**
+ * This class deals with different cuisines available
+ */
 public class CuisinesActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter,adapter1;
     RecyclerView recyclerView,recyclerViewCategory;
+
+    /**
+     * This method is called whenever the user chooses to navigate up within your application's activity hierarchy from the action bar.
+     * @return boolean:true if Up navigation completed successfully and this Activity was finished, false otherwise.
+     */
     @Override
     public boolean onSupportNavigateUp() {
         finish();
@@ -115,6 +124,9 @@ public class CuisinesActivity extends AppCompatActivity {
         recyclerViewCategory.setAdapter(adapter1);
         }
 
+    /**
+     * Describes the content of each cuisine in recyclerview
+     */
     private class CuisinesViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtName;
